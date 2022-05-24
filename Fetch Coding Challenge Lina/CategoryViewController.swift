@@ -20,10 +20,8 @@ class CategoryViewController: UIViewController {
         view.addSubview(tableView)
         tableView.backgroundColor = .magenta
         tableView.translatesAutoresizingMaskIntoConstraints = false
-
         tableView.dataSource = self
-
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "cell")
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -44,8 +42,8 @@ extension CategoryViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Hello"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailTableViewCell
+   //     cell.textLabel?.text = "Hello"
         return cell
     }
 
