@@ -16,7 +16,8 @@
 		FCA450E5283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */; };
 		FCA450E7283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */; };
 		FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */; };
-		FCA450F6283D604800F5DD76 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F5283D604800F5DD76 /* DetailViewController.swift */; };
+		FCA450F8283D692E00F5DD76 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */; };
+		FCA450FA283D69D100F5DD76 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F9283D69D100F5DD76 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,8 @@
 		FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaUITests.swift; sourceTree = "<group>"; };
 		FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		FCA450F5283D604800F5DD76 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		FCA450F9283D69D100F5DD76 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +105,9 @@
 			children = (
 				FCA450C3283D56F800F5DD76 /* AppDelegate.swift */,
 				FCA450C5283D56F800F5DD76 /* SceneDelegate.swift */,
-				FCA450F5283D604800F5DD76 /* DetailViewController.swift */,
 				FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */,
+				FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */,
+				FCA450F9283D69D100F5DD76 /* DetailViewController.swift */,
 				FCA450C9283D56F800F5DD76 /* Main.storyboard */,
 				FCA450CC283D56FD00F5DD76 /* Assets.xcassets */,
 				FCA450CE283D56FD00F5DD76 /* LaunchScreen.storyboard */,
@@ -262,9 +265,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */,
+				FCA450F8283D692E00F5DD76 /* RecipeTableViewCell.swift in Sources */,
+				FCA450FA283D69D100F5DD76 /* DetailViewController.swift in Sources */,
 				FCA450C4283D56F800F5DD76 /* AppDelegate.swift in Sources */,
 				FCA450C6283D56F800F5DD76 /* SceneDelegate.swift in Sources */,
-				FCA450F6283D604800F5DD76 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

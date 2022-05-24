@@ -5,46 +5,54 @@
 //  Created by Lina on 5/24/22.
 //
 
-import Foundation
 import UIKit
 
-class DetailTableViewCell: UITableViewCell {
+class DetailViewController: UIViewController {
 
-    static let identifier = "cell"
+    let dummyInstruction = "Pre-heat the oven to 180C/350F/Gas 4. Grease an 18cm/7in round cake tin, line the base with greaseproof paper and grease the paper.\r\nCream the butter and sugar together in a bowl until pale and fluffy. Beat in the eggs, one at a time, beating the mixture well between each one and adding a tablespoon of the flour with the last egg to prevent the mixture curdling."
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        contentView.backgroundColor = .yellow
+        view.backgroundColor = .orange
 
-        let recipeImageView = UIImageView()
-        contentView.addSubview(recipeImageView)
-        recipeImageView.translatesAutoresizingMaskIntoConstraints = false
-        recipeImageView.image = UIImage(systemName: "sun.max")
+        let detailRecipeLabel = UILabel()
+        view.addSubview(detailRecipeLabel)
+        detailRecipeLabel.font = .boldSystemFont(ofSize: 24)
+        detailRecipeLabel.text = "Chocolate Cake"
+        detailRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        let recipeLabel = UILabel()
-        contentView.addSubview(recipeLabel)
-        recipeLabel.translatesAutoresizingMaskIntoConstraints = false
-        recipeLabel.font = .boldSystemFont(ofSize: 20)
-        recipeLabel.text = "It's a sunny day!"
+        //TODO: make scrollable
+        let instructionLabel = UILabel()
+        view.addSubview(instructionLabel)
+        instructionLabel.translatesAutoresizingMaskIntoConstraints = false
+        instructionLabel.font = .systemFont(ofSize: 17)
+        instructionLabel.text = dummyInstruction
+        instructionLabel.lineBreakMode = .byWordWrapping
+        instructionLabel.numberOfLines = 0
+
+        let detailImageView = UIImageView()
+        view.addSubview(detailImageView)
+        detailImageView.translatesAutoresizingMaskIntoConstraints = false
+        detailImageView.image = UIImage(systemName: "sun.max")
+        detailImageView.contentMode = .scaleAspectFit
+
+        //stack view
+        
 
         NSLayoutConstraint.activate([
-            recipeImageView.widthAnchor.constraint(equalToConstant: 80),
-            recipeImageView.heightAnchor.constraint(equalTo: recipeImageView.widthAnchor),
+            detailRecipeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            detailRecipeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            recipeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            recipeImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            recipeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-       //     recipeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            detailImageView.topAnchor.constraint(equalTo: detailRecipeLabel.bottomAnchor, constant: 80),
+            detailImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            detailImageView.widthAnchor.constraint(equalToConstant: 100),
+            detailImageView.heightAnchor.constraint(equalTo: detailImageView.widthAnchor),
 
-            recipeLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: 30),
-            recipeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            instructionLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor, constant: 40),
+            instructionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            instructionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-
     }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
 }

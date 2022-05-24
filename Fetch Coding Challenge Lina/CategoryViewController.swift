@@ -21,7 +21,9 @@ class CategoryViewController: UIViewController {
         tableView.backgroundColor = .magenta
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
-        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.delegate = self
+        tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.identifier)
+
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -42,10 +44,18 @@ extension CategoryViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailTableViewCell
-   //     cell.textLabel?.text = "Hello"
+        let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
         return cell
     }
-
 }
 
+
+//MARK: - Extension UITableViewDelegate
+
+extension CategoryViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = DetailViewController()
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
