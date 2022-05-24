@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FCA450C4283D56F800F5DD76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450C3283D56F800F5DD76 /* AppDelegate.swift */; };
+		FCA450C6283D56F800F5DD76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450C5283D56F800F5DD76 /* SceneDelegate.swift */; };
+		FCA450CB283D56F800F5DD76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA450C9283D56F800F5DD76 /* Main.storyboard */; };
+		FCA450CD283D56FD00F5DD76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA450CC283D56FD00F5DD76 /* Assets.xcassets */; };
+		FCA450D0283D56FD00F5DD76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA450CE283D56FD00F5DD76 /* LaunchScreen.storyboard */; };
+		FCA450DB283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450DA283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift */; };
+		FCA450E5283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */; };
+		FCA450E7283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */; };
+		FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FCA450D7283D56FE00F5DD76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCA450B8283D56F700F5DD76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCA450BF283D56F700F5DD76;
+			remoteInfo = "Fetch Coding Challenge Lina";
+		};
+		FCA450E1283D56FE00F5DD76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCA450B8283D56F700F5DD76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCA450BF283D56F700F5DD76;
+			remoteInfo = "Fetch Coding Challenge Lina";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FCA450C0283D56F700F5DD76 /* Fetch Coding Challenge Lina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fetch Coding Challenge Lina.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA450C3283D56F800F5DD76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FCA450C5283D56F800F5DD76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FCA450CA283D56F800F5DD76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FCA450CC283D56FD00F5DD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FCA450CF283D56FD00F5DD76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FCA450D1283D56FD00F5DD76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCA450D6283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fetch Coding Challenge LinaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA450DA283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaTests.swift; sourceTree = "<group>"; };
+		FCA450E0283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fetch Coding Challenge LinaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaUITests.swift; sourceTree = "<group>"; };
+		FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FCA450BD283D56F700F5DD76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA450D3283D56FE00F5DD76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA450DD283D56FE00F5DD76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FCA450B7283D56F700F5DD76 = {
+			isa = PBXGroup;
+			children = (
+				FCA450C2283D56F700F5DD76 /* Fetch Coding Challenge Lina */,
+				FCA450D9283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests */,
+				FCA450E3283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests */,
+				FCA450C1283D56F700F5DD76 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FCA450C1283D56F700F5DD76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FCA450C0283D56F700F5DD76 /* Fetch Coding Challenge Lina.app */,
+				FCA450D6283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests.xctest */,
+				FCA450E0283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FCA450C2283D56F700F5DD76 /* Fetch Coding Challenge Lina */ = {
+			isa = PBXGroup;
+			children = (
+				FCA450C3283D56F800F5DD76 /* AppDelegate.swift */,
+				FCA450C5283D56F800F5DD76 /* SceneDelegate.swift */,
+				FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */,
+				FCA450C9283D56F800F5DD76 /* Main.storyboard */,
+				FCA450CC283D56FD00F5DD76 /* Assets.xcassets */,
+				FCA450CE283D56FD00F5DD76 /* LaunchScreen.storyboard */,
+				FCA450D1283D56FD00F5DD76 /* Info.plist */,
+			);
+			path = "Fetch Coding Challenge Lina";
+			sourceTree = "<group>";
+		};
+		FCA450D9283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests */ = {
+			isa = PBXGroup;
+			children = (
+				FCA450DA283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift */,
+			);
+			path = "Fetch Coding Challenge LinaTests";
+			sourceTree = "<group>";
+		};
+		FCA450E3283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */,
+				FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */,
+			);
+			path = "Fetch Coding Challenge LinaUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FCA450BF283D56F700F5DD76 /* Fetch Coding Challenge Lina */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCA450EA283D56FE00F5DD76 /* Build configuration list for PBXNativeTarget "Fetch Coding Challenge Lina" */;
+			buildPhases = (
+				FCA450BC283D56F700F5DD76 /* Sources */,
+				FCA450BD283D56F700F5DD76 /* Frameworks */,
+				FCA450BE283D56F700F5DD76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Fetch Coding Challenge Lina";
+			productName = "Fetch Coding Challenge Lina";
+			productReference = FCA450C0283D56F700F5DD76 /* Fetch Coding Challenge Lina.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FCA450D5283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCA450ED283D56FE00F5DD76 /* Build configuration list for PBXNativeTarget "Fetch Coding Challenge LinaTests" */;
+			buildPhases = (
+				FCA450D2283D56FE00F5DD76 /* Sources */,
+				FCA450D3283D56FE00F5DD76 /* Frameworks */,
+				FCA450D4283D56FE00F5DD76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCA450D8283D56FE00F5DD76 /* PBXTargetDependency */,
+			);
+			name = "Fetch Coding Challenge LinaTests";
+			productName = "Fetch Coding Challenge LinaTests";
+			productReference = FCA450D6283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FCA450DF283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCA450F0283D56FE00F5DD76 /* Build configuration list for PBXNativeTarget "Fetch Coding Challenge LinaUITests" */;
+			buildPhases = (
+				FCA450DC283D56FE00F5DD76 /* Sources */,
+				FCA450DD283D56FE00F5DD76 /* Frameworks */,
+				FCA450DE283D56FE00F5DD76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCA450E2283D56FE00F5DD76 /* PBXTargetDependency */,
+			);
+			name = "Fetch Coding Challenge LinaUITests";
+			productName = "Fetch Coding Challenge LinaUITests";
+			productReference = FCA450E0283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FCA450B8283D56F700F5DD76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					FCA450BF283D56F700F5DD76 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					FCA450D5283D56FE00F5DD76 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = FCA450BF283D56F700F5DD76;
+					};
+					FCA450DF283D56FE00F5DD76 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = FCA450BF283D56F700F5DD76;
+					};
+				};
+			};
+			buildConfigurationList = FCA450BB283D56F700F5DD76 /* Build configuration list for PBXProject "Fetch Coding Challenge Lina" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FCA450B7283D56F700F5DD76;
+			productRefGroup = FCA450C1283D56F700F5DD76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FCA450BF283D56F700F5DD76 /* Fetch Coding Challenge Lina */,
+				FCA450D5283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests */,
+				FCA450DF283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FCA450BE283D56F700F5DD76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA450D0283D56FD00F5DD76 /* LaunchScreen.storyboard in Resources */,
+				FCA450CD283D56FD00F5DD76 /* Assets.xcassets in Resources */,
+				FCA450CB283D56F800F5DD76 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA450D4283D56FE00F5DD76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA450DE283D56FE00F5DD76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FCA450BC283D56F700F5DD76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */,
+				FCA450C4283D56F800F5DD76 /* AppDelegate.swift in Sources */,
+				FCA450C6283D56F800F5DD76 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA450D2283D56FE00F5DD76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA450DB283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCA450DC283D56FE00F5DD76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA450E5283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift in Sources */,
+				FCA450E7283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FCA450D8283D56FE00F5DD76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCA450BF283D56F700F5DD76 /* Fetch Coding Challenge Lina */;
+			targetProxy = FCA450D7283D56FE00F5DD76 /* PBXContainerItemProxy */;
+		};
+		FCA450E2283D56FE00F5DD76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCA450BF283D56F700F5DD76 /* Fetch Coding Challenge Lina */;
+			targetProxy = FCA450E1283D56FE00F5DD76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FCA450C9283D56F800F5DD76 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCA450CA283D56F800F5DD76 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FCA450CE283D56FD00F5DD76 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FCA450CF283D56FD00F5DD76 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FCA450E8283D56FE00F5DD76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FCA450E9283D56FE00F5DD76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FCA450EB283D56FE00F5DD76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C62J87LZSH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Fetch Coding Challenge Lina/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Recipes;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lina.Fetch-Coding-Challenge-Lina";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FCA450EC283D56FE00F5DD76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C62J87LZSH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Fetch Coding Challenge Lina/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Recipes;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lina.Fetch-Coding-Challenge-Lina";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FCA450EE283D56FE00F5DD76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C62J87LZSH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lina.Fetch-Coding-Challenge-LinaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fetch Coding Challenge Lina.app/Fetch Coding Challenge Lina";
+			};
+			name = Debug;
+		};
+		FCA450EF283D56FE00F5DD76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C62J87LZSH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lina.Fetch-Coding-Challenge-LinaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fetch Coding Challenge Lina.app/Fetch Coding Challenge Lina";
+			};
+			name = Release;
+		};
+		FCA450F1283D56FE00F5DD76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C62J87LZSH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lina.Fetch-Coding-Challenge-LinaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Fetch Coding Challenge Lina";
+			};
+			name = Debug;
+		};
+		FCA450F2283D56FE00F5DD76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C62J87LZSH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lina.Fetch-Coding-Challenge-LinaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Fetch Coding Challenge Lina";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FCA450BB283D56F700F5DD76 /* Build configuration list for PBXProject "Fetch Coding Challenge Lina" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA450E8283D56FE00F5DD76 /* Debug */,
+				FCA450E9283D56FE00F5DD76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCA450EA283D56FE00F5DD76 /* Build configuration list for PBXNativeTarget "Fetch Coding Challenge Lina" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA450EB283D56FE00F5DD76 /* Debug */,
+				FCA450EC283D56FE00F5DD76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCA450ED283D56FE00F5DD76 /* Build configuration list for PBXNativeTarget "Fetch Coding Challenge LinaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA450EE283D56FE00F5DD76 /* Debug */,
+				FCA450EF283D56FE00F5DD76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCA450F0283D56FE00F5DD76 /* Build configuration list for PBXNativeTarget "Fetch Coding Challenge LinaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA450F1283D56FE00F5DD76 /* Debug */,
+				FCA450F2283D56FE00F5DD76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FCA450B8283D56F700F5DD76 /* Project object */;
+}
