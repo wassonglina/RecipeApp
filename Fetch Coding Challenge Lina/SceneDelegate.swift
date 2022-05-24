@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        //programmatically setup app with Scene Delegate and create window hierarchy 
+        //programmatically setup app with Scene Delegate, add UINavigationController, set root ViewController, and create window hierarchy
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
