@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RecipeManagerDelegate {
-    func didFetchRecipes(recipes: RecipeModel)
+    func didFetchRecipes(recipes: [RecipeModel])
     func didCatchError(error: Error)
 }
 
@@ -39,15 +39,16 @@ struct RecipeManager {
         }
     }
     
-    func parseJSON(_ recipesData: Data) -> RecipeModel? {       //return Model      
+    func parseJSON(_ recipesData: Data) -> [RecipeModel]? {       //return Model
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(CategoryPayloadData.self, from: recipesData)  //RecipeData
-            let name = decodedData.meals[0].strMeal
-            let id = decodedData.meals[0].idMeal
-            let recipe = RecipeModel(dessertName: name, id: id)
-            print(#function, recipe)
-            return recipe
+            let decodedData = try decoder.decode(CategoryPayload.self, from: recipesData)
+
+            //TODO: use map or compactMap?
+            let recipeModels: [RecipeModel] = decodedData.meals
+                .sorted { $0.strMeal < $1.strMeal }
+                .compactMap { RecipeModel(dessertName: $0.strMeal, id: $0.idMeal) }
+            return recipeModels
         } catch {
             self.delegate?.didCatchError(error: error)
             print("Error parsing JSON")

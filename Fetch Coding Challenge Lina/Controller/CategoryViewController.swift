@@ -27,6 +27,12 @@ class CategoryViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         dataSource = UITableViewDiffableDataSource<Int, RecipeModel>(tableView: tableView) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
+
+            print(self.dataSource.itemIdentifier(for: indexPath)?.dessertName)
+            cell.categoryRecipeLabel.text = self.dataSource.itemIdentifier(for: indexPath)?.dessertName
+
+
+            //func change text in cell class
             return cell
         }
         tableView.dataSource = dataSource
@@ -39,8 +45,6 @@ class CategoryViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-
-
     }
 
     private var dataSource: UITableViewDiffableDataSource<Int, RecipeModel>!
@@ -60,13 +64,12 @@ extension CategoryViewController: UITableViewDelegate {
 
 extension CategoryViewController: RecipeManagerDelegate {
 
-    func didFetchRecipes(recipes: RecipeModel) {
+    func didFetchRecipes(recipes: [RecipeModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, RecipeModel>()
 
         snapshot.appendSections([0])
-        snapshot.appendItems([recipes])
+        snapshot.appendItems(recipes)
         dataSource.apply(snapshot)
-        print(#function, recipes)
     }
 
     func didCatchError(error: Error) {
