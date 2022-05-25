@@ -66,7 +66,6 @@ class DetailViewController: UIViewController {
 //        measurementLabel.translatesAutoresizingMaskIntoConstraints = false
 //        measurementLabel.text = "Measurement No.1"
 
-
         NSLayoutConstraint.activate([
             recipeTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             recipeTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),

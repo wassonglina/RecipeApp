@@ -26,12 +26,12 @@ class RecipeTableViewCell: UITableViewCell {
         let categoryRecipeLabel = UILabel()
         contentView.addSubview(categoryRecipeLabel)
         categoryRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
-        categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)
-        categoryRecipeLabel.text = "It's a sunny day!"
+        categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)  //make font adjustable to label length
+        categoryRecipeLabel.text = "Yummy Chocolate Cake"
 
         NSLayoutConstraint.activate([
             categoryImageView.widthAnchor.constraint(equalToConstant: 80),
-            categoryImageView.heightAnchor.constraint(equalTo: categoryImageView.widthAnchor),       //TODO: conflicting width constraint??
+       //     categoryImageView.heightAnchor.constraint(equalTo: categoryImageView.widthAnchor),       //TODO: conflicting width constraint??
             categoryImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
@@ -39,7 +39,7 @@ class RecipeTableViewCell: UITableViewCell {
             categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
        //     recipeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
 
-            categoryRecipeLabel.leadingAnchor.constraint(equalTo: categoryImageView.trailingAnchor, constant: 30),
+            categoryRecipeLabel.leadingAnchor.constraint(equalTo: categoryImageView.trailingAnchor, constant: 15),
             categoryRecipeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }

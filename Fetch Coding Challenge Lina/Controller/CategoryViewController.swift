@@ -16,6 +16,10 @@ class CategoryViewController: UIViewController {
 
         view.backgroundColor = .cyan
 
+        let recipeManager = RecipeManager()
+
+        recipeManager.performNetworkRequest(with: "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert")
+
         let tableView = UITableView()
         view.addSubview(tableView)
         tableView.backgroundColor = .magenta
@@ -23,7 +27,6 @@ class CategoryViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.identifier)
-
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),

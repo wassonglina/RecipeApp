@@ -18,6 +18,9 @@
 		FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */; };
 		FCA450F8283D692E00F5DD76 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */; };
 		FCA450FA283D69D100F5DD76 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F9283D69D100F5DD76 /* DetailViewController.swift */; };
+		FCA450FC283E930600F5DD76 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FB283E930600F5DD76 /* RecipeManager.swift */; };
+		FCA450FE283E9DE700F5DD76 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FD283E9DE700F5DD76 /* RecipeData.swift */; };
+		FCA45103283EA32C00F5DD76 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45102283EA32C00F5DD76 /* RecipeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		FCA450F9283D69D100F5DD76 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FCA450FB283E930600F5DD76 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
+		FCA450FD283E9DE700F5DD76 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
+		FCA45102283EA32C00F5DD76 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +111,9 @@
 			children = (
 				FCA450C3283D56F800F5DD76 /* AppDelegate.swift */,
 				FCA450C5283D56F800F5DD76 /* SceneDelegate.swift */,
-				FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */,
-				FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */,
-				FCA450F9283D69D100F5DD76 /* DetailViewController.swift */,
+				FCA450FF283EA2D900F5DD76 /* Model */,
+				FCA45100283EA2E000F5DD76 /* View */,
+				FCA45101283EA2F100F5DD76 /* Controller */,
 				FCA450C9283D56F800F5DD76 /* Main.storyboard */,
 				FCA450CC283D56FD00F5DD76 /* Assets.xcassets */,
 				FCA450CE283D56FD00F5DD76 /* LaunchScreen.storyboard */,
@@ -131,6 +137,33 @@
 				FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */,
 			);
 			path = "Fetch Coding Challenge LinaUITests";
+			sourceTree = "<group>";
+		};
+		FCA450FF283EA2D900F5DD76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCA450FB283E930600F5DD76 /* RecipeManager.swift */,
+				FCA45102283EA32C00F5DD76 /* RecipeModel.swift */,
+				FCA450FD283E9DE700F5DD76 /* RecipeData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FCA45100283EA2E000F5DD76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FCA45101283EA2F100F5DD76 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FCA450F9283D69D100F5DD76 /* DetailViewController.swift */,
+				FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +299,10 @@
 			files = (
 				FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */,
 				FCA450F8283D692E00F5DD76 /* RecipeTableViewCell.swift in Sources */,
+				FCA450FE283E9DE700F5DD76 /* RecipeData.swift in Sources */,
 				FCA450FA283D69D100F5DD76 /* DetailViewController.swift in Sources */,
+				FCA450FC283E930600F5DD76 /* RecipeManager.swift in Sources */,
+				FCA45103283EA32C00F5DD76 /* RecipeModel.swift in Sources */,
 				FCA450C4283D56F800F5DD76 /* AppDelegate.swift in Sources */,
 				FCA450C6283D56F800F5DD76 /* SceneDelegate.swift in Sources */,
 			);
