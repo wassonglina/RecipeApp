@@ -7,9 +7,16 @@
 
 import Foundation
 
+protocol RecipeManagerDelegate {
+    func didFetchRecipes(recipes: RecipeModel)
+    func didCatchError(error: Error)
+}
+
 struct RecipeManager {
     
     let categoryDessertURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
+
+    var delegate: RecipeManagerDelegate?        //no weak because struct?
     
     func performNetworkRequest(with urlString: String) {
         
@@ -18,37 +25,33 @@ struct RecipeManager {
             print(session)
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
-                    print("Error getting recipes.")
-                    //self delegate got error
+                    print("Error performing network request.")
+                    self.delegate?.didCatchError(error: error!)
                     return
                 }
                 if let safeData = data {
-                    parseJSON(safeData)
-                    //                    if let dessertRecipes = self.parseJSON(safeData) {
-                    //                    //    call delegate got recipes
-                    //                        print("got data", safeData)
-                    //                    }
+                    if let dessertRecipes = self.parseJSON(safeData) {
+                        self.delegate?.didFetchRecipes(recipes: dessertRecipes)
+                    }
                 }
             }
             task.resume()
         }
     }
     
-    func parseJSON(_ recipesData: Data) {       //return Model
-        print("parsing JSON with", recipesData)
-        
+    func parseJSON(_ recipesData: Data) -> RecipeModel? {       //return Model      
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(RecipeData.self, from: recipesData)  //RecipeData
             let name = decodedData.meals[0].strMeal
             let id = decodedData.meals[0].idMeal
-            
-            print(name, id)
-            //return Model
+            let recipe = RecipeModel(dessertName: name, id: id)
+            print(#function, recipe)
+            return recipe
         } catch {
-            //call delegate got Error
+            self.delegate?.didCatchError(error: error)
             print("Error parsing JSON")
-            // return Model
+            return nil
         }
     }
 }

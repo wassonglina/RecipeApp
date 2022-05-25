@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct RecipeModel {
+
+    let dessertName: String
+//    let image: imge
+    let id: String  //TODO: or type Int?
+}

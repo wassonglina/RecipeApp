@@ -16,7 +16,8 @@ class CategoryViewController: UIViewController {
 
         view.backgroundColor = .cyan
 
-        let recipeManager = RecipeManager()
+        var recipeManager = RecipeManager()
+        recipeManager.delegate = self
 
         recipeManager.performNetworkRequest(with: "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert")
 
@@ -61,4 +62,19 @@ extension CategoryViewController: UITableViewDelegate {
         let detailViewController = DetailViewController()
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
+}
+
+//MARK: - Extension UITableViewDelegate
+
+extension CategoryViewController: RecipeManagerDelegate {
+
+    func didFetchRecipes(recipes: RecipeModel) {
+        print(#function, recipes)
+    }
+
+    func didCatchError(error: Error) {
+        //handle Errors here
+        print("Error")
+    }
+
 }
