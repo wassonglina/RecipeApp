@@ -15,7 +15,7 @@ class RecipeTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.backgroundColor = .yellow
+        contentView.backgroundColor = .lightGray
 
         let categoryImageView = UIImageView()
         contentView.addSubview(categoryImageView)

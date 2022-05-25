@@ -16,20 +16,32 @@ class DetailViewController: UIViewController {
 
         view.backgroundColor = .orange
 
-        let detailRecipeLabel = UILabel()
-        view.addSubview(detailRecipeLabel)
-        detailRecipeLabel.font = .boldSystemFont(ofSize: 24)
-        detailRecipeLabel.text = "Chocolate Cake"
-        detailRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
+        let recipeTitleLabel = UILabel()
+        view.addSubview(recipeTitleLabel)
+        recipeTitleLabel.font = .boldSystemFont(ofSize: 24)
+        recipeTitleLabel.text = "Chocolate Cake"
+        recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         //TODO: make scrollable
-        let instructionLabel = UILabel()
-        view.addSubview(instructionLabel)
-        instructionLabel.translatesAutoresizingMaskIntoConstraints = false
-        instructionLabel.font = .systemFont(ofSize: 17)
-        instructionLabel.text = dummyInstruction
-        instructionLabel.lineBreakMode = .byWordWrapping
-        instructionLabel.numberOfLines = 0
+        let instructionsLabel = UILabel()
+        view.addSubview(instructionsLabel)
+        instructionsLabel.translatesAutoresizingMaskIntoConstraints = false
+        instructionsLabel.font = .systemFont(ofSize: 17)
+        instructionsLabel.text = dummyInstruction
+        instructionsLabel.lineBreakMode = .byWordWrapping
+        instructionsLabel.numberOfLines = 0
+
+        let ingredientsTitleLabel = UILabel()
+        view.addSubview(ingredientsTitleLabel)
+        ingredientsTitleLabel.font = .boldSystemFont(ofSize: 20)
+        ingredientsTitleLabel.text = "Ingredients"
+        ingredientsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        let instructionsTitleLabel = UILabel()
+        view.addSubview(instructionsTitleLabel)
+        instructionsTitleLabel.font = .boldSystemFont(ofSize: 20)
+        instructionsTitleLabel.text = "Instructions"
+        instructionsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         let detailImageView = UIImageView()
         view.addSubview(detailImageView)
@@ -37,22 +49,49 @@ class DetailViewController: UIViewController {
         detailImageView.image = UIImage(systemName: "sun.max")
         detailImageView.contentMode = .scaleAspectFit
 
-        //stack view
-        
+        let ingredientsStackView = UIStackView()
+        view.addSubview(ingredientsStackView)
+        ingredientsStackView.translatesAutoresizingMaskIntoConstraints = false
+        ingredientsStackView.backgroundColor = .magenta
+        ingredientsStackView.spacing = 50
+        ingredientsStackView.alignment = .leading
+
+        let ingredientsLabel = UILabel()
+        ingredientsStackView.addSubview(ingredientsLabel)
+        ingredientsLabel.translatesAutoresizingMaskIntoConstraints = false
+        ingredientsLabel.text = "Ingredient No.1"
+
+//        let measurementLabel = UILabel()
+//        ingredientsStackView.addSubview(measurementLabel)
+//        measurementLabel.translatesAutoresizingMaskIntoConstraints = false
+//        measurementLabel.text = "Measurement No.1"
+
 
         NSLayoutConstraint.activate([
-            detailRecipeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            detailRecipeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            recipeTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            recipeTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            detailImageView.topAnchor.constraint(equalTo: detailRecipeLabel.bottomAnchor, constant: 80),
+            detailImageView.topAnchor.constraint(equalTo: recipeTitleLabel.bottomAnchor, constant: 30),
             detailImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             detailImageView.widthAnchor.constraint(equalToConstant: 100),
             detailImageView.heightAnchor.constraint(equalTo: detailImageView.widthAnchor),
 
-            instructionLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor, constant: 40),
-            instructionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            instructionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ingredientsTitleLabel.topAnchor.constraint(equalTo: detailImageView.bottomAnchor, constant: 30),
+            ingredientsTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+
+            ingredientsStackView.topAnchor.constraint(equalTo: ingredientsTitleLabel.bottomAnchor, constant: 15),
+            ingredientsStackView.heightAnchor.constraint(equalToConstant: 250), //TODO: depends on ingredients contect
+    //        ingredientsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            ingredientsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            ingredientsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+
+            instructionsTitleLabel.topAnchor.constraint(equalTo: ingredientsStackView.bottomAnchor, constant: 30),
+            instructionsTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+
+            instructionsLabel.topAnchor.constraint(equalTo: instructionsTitleLabel.bottomAnchor, constant: 15),
+            instructionsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            instructionsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+     //       instructionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)     //TODO: necessary to center?
         ])
     }
 }
