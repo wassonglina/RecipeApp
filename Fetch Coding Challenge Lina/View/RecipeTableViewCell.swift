@@ -11,25 +11,20 @@ import UIKit
 class RecipeTableViewCell: UITableViewCell {
 
     static let identifier = "cell"
-
-     let categoryRecipeLabel = UILabel()
+    private let categoryRecipeLabel = UILabel()
     private let categoryImageView = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        contentView.backgroundColor = .lightGray
 
         contentView.addSubview(categoryImageView)
         categoryImageView.translatesAutoresizingMaskIntoConstraints = false
         categoryImageView.image = UIImage(systemName: "sun.max")
         categoryImageView.contentMode = .scaleAspectFit
 
-
         contentView.addSubview(categoryRecipeLabel)
         categoryRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
         categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)  //make font adjustable to label length
-        categoryRecipeLabel.text = "Yummy Chocolate Cake"
 
         NSLayoutConstraint.activate([
             categoryImageView.widthAnchor.constraint(equalToConstant: 80),
@@ -50,8 +45,8 @@ class RecipeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func getRecipeLabel(name: String) {
-   //     categoryRecipeLabel.text = name
+    func setTitle(_ title: String) {
+        categoryRecipeLabel.text = title
     }
 }
 

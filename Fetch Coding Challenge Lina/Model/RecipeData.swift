@@ -17,7 +17,17 @@ struct CategoryPayload: Codable {
     }
 }
 
-
+//struct DetailsPayload: Codable {
+//
+//    let strMeal: String
+//
+//    let strInstructions:
+//
+//    let strIngredient1": "Milk",
+//
+//    let strMeasure1": "200ml",
+//
+//}
 
 //    "strMeal": "Apam balik",
 //    "strMealThumb": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",

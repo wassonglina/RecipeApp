@@ -27,12 +27,7 @@ class CategoryViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         dataSource = UITableViewDiffableDataSource<Int, RecipeModel>(tableView: tableView) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
-
-            print(self.dataSource.itemIdentifier(for: indexPath)?.dessertName)
-            cell.categoryRecipeLabel.text = self.dataSource.itemIdentifier(for: indexPath)?.dessertName
-
-
-            //func change text in cell class
+            cell.setTitle(item.dessertName)
             return cell
         }
         tableView.dataSource = dataSource
@@ -76,5 +71,4 @@ extension CategoryViewController: RecipeManagerDelegate {
         //handle Errors here
         print("Error")
     }
-
 }
