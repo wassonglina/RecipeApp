@@ -25,7 +25,11 @@ class CategoryViewController: UIViewController {
         view.addSubview(tableView)
         tableView.backgroundColor = .magenta
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self
+        dataSource = UITableViewDiffableDataSource<Int, RecipeModel>(tableView: tableView) { tableView, indexPath, item in
+            let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
+            return cell
+        }
+        tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.identifier)
 
@@ -35,24 +39,12 @@ class CategoryViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+
+
     }
+
+    private var dataSource: UITableViewDiffableDataSource<Int, RecipeModel>!
 }
-
-
-//MARK: - Extension UITableViewDataSource
-
-extension CategoryViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
-        return cell
-    }
-}
-
 
 //MARK: - Extension UITableViewDelegate
 
@@ -69,6 +61,11 @@ extension CategoryViewController: UITableViewDelegate {
 extension CategoryViewController: RecipeManagerDelegate {
 
     func didFetchRecipes(recipes: RecipeModel) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, RecipeModel>()
+
+        snapshot.appendSections([0])
+        snapshot.appendItems([recipes])
+        dataSource.apply(snapshot)
         print(#function, recipes)
     }
 

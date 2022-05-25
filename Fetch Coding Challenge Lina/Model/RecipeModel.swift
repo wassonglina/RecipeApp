@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeModel {
+struct RecipeModel: Hashable {
 
     let dessertName: String
 //    let image: imge

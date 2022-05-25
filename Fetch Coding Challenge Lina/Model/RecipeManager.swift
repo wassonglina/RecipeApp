@@ -42,7 +42,7 @@ struct RecipeManager {
     func parseJSON(_ recipesData: Data) -> RecipeModel? {       //return Model      
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(RecipeData.self, from: recipesData)  //RecipeData
+            let decodedData = try decoder.decode(CategoryPayloadData.self, from: recipesData)  //RecipeData
             let name = decodedData.meals[0].strMeal
             let id = decodedData.meals[0].idMeal
             let recipe = RecipeModel(dessertName: name, id: id)
