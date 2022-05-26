@@ -25,17 +25,16 @@ class CategoryViewModel: RecipeManagerDelegate {
 
     func getCategoryData() {
         recipeManager.performNetworkRequest(with: recipeURL)
-
     }
 
     func didFetchCategory(_ category: [RecipeModel]) {
-        self.delegate?.prepareCategoryUI(with: category)
-        print(category)
+        //do any additional preparation on category for UI in here, then pass to VC
+        let sortedCategory: [RecipeModel] = category.sorted { $0.dessertName < $1.dessertName }
+        self.delegate?.prepareCategoryUI(with: sortedCategory)
     }
 
     func didCatchError(error: Error) {
         self.delegate?.didCatchError(error: error)
-        print(error)
     }
 }
 

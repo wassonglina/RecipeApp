@@ -34,10 +34,7 @@ struct RecipeManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(CategoryPayload.self, from: recipesData)
-            //TODO: sort data here? use map or compactMap?
             let recipeModels: [RecipeModel] = decodedData.meals
-            //move view model
-                .sorted { $0.strMeal < $1.strMeal }
                 .compactMap { RecipeModel(dessertName: $0.strMeal, id: $0.idMeal) }
             return recipeModels
         } catch {

@@ -21,7 +21,6 @@ class CategoryViewController: UIViewController {
         view.backgroundColor = .cyan
 
         categoryViewModel.delegate = self
-        
         categoryViewModel.getCategoryData()
 
         //TODO: leave here?
@@ -63,7 +62,6 @@ extension CategoryViewController: UITableViewDelegate {
 extension CategoryViewController: ViewModelDelegate {
 
     func prepareCategoryUI(with category: [RecipeModel]) {
-        print(#function, category)
         var snapshot = NSDiffableDataSourceSnapshot<Int, RecipeModel>()
         snapshot.appendSections([0])
         snapshot.appendItems(category)
@@ -71,7 +69,6 @@ extension CategoryViewController: ViewModelDelegate {
     }
 
     func didCatchError(error: Error) {
-        //handle Errors here
         print("Error")
     }
 }
