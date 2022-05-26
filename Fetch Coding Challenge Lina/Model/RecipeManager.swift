@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RecipeManagerDelegate {
-    func didFetchCategory(_ recipes: [RecipeModel])
+    func didFetchCategory(_ category: [RecipeModel])
     func didCatchError(error: Error)
 }
 
@@ -23,8 +23,8 @@ struct RecipeManager {
             .dataTask(with: url) { data, response, error in
                 if let error = error {
                     self.delegate?.didCatchError(error: error)
-                } else if let safeData = data, let recipesData = self.parseJSON(safeData) {
-                    self.delegate?.didFetchCategory(recipesData)
+                } else if let safeData = data, let categoryData = self.parseJSON(safeData) {
+                    self.delegate?.didFetchCategory(categoryData)
                 }
             }
         task.resume()

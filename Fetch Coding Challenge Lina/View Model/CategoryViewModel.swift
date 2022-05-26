@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ViewModelDelegate: AnyObject {
-    func prepareCategoryUI(_ category: [RecipeModel])
+    func prepareCategoryUI(with category: [RecipeModel])
     func didCatchError(error: Error)
 }
 
@@ -28,16 +28,14 @@ class CategoryViewModel: RecipeManagerDelegate {
 
     }
 
-    func didFetchCategory(_ recipes: [RecipeModel]) {
-        print(#function, recipes)
-        //delegate? prerpeateCategoryUI
+    func didFetchCategory(_ category: [RecipeModel]) {
+        self.delegate?.prepareCategoryUI(with: category)
+        print(category)
     }
 
     func didCatchError(error: Error) {
+        self.delegate?.didCatchError(error: error)
         print(error)
     }
-
-    //call method to pass on Data to VC
-
 }
 

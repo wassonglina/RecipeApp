@@ -20,7 +20,8 @@ class CategoryViewController: UIViewController {
 
         view.backgroundColor = .cyan
 
-        //TODO: move to ViewModel
+        categoryViewModel.delegate = self
+        
         categoryViewModel.getCategoryData()
 
         //TODO: leave here?
@@ -57,34 +58,20 @@ extension CategoryViewController: UITableViewDelegate {
     }
 }
 
-
-    //TODO:  to View Model?
-//    func didFetchCategory(_ recipes: [RecipeModel]) {
-//        var snapshot = NSDiffableDataSourceSnapshot<Int, RecipeModel>()
-//        snapshot.appendSections([0])
-//        snapshot.appendItems(recipes)
-//        dataSource.apply(snapshot)
-//    }
-
-//    func didCatchError(error: Error) {
-//        //handle Errors here
-//        print("Error")
-//    }
-
-
 //MARK: - Extension ViewModelDelegate
 
 extension CategoryViewController: ViewModelDelegate {
 
-    func prepareCategoryUI(_ category: [RecipeModel]) {
+    func prepareCategoryUI(with category: [RecipeModel]) {
         print(#function, category)
+        var snapshot = NSDiffableDataSourceSnapshot<Int, RecipeModel>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(category)
+        dataSource.apply(snapshot)
     }
 
     func didCatchError(error: Error) {
         //handle Errors here
         print("Error")
     }
-
-    //TODO:  to View Model?
-
 }
