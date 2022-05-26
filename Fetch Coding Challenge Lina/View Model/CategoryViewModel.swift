@@ -12,20 +12,17 @@ protocol ViewModelDelegate: AnyObject {
     func didCatchError(error: Error)
 }
 
-class CategoryViewModel: CategoryManagerDelegate {
+class CategoryViewModel {
 
-    private let recipeURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
+    private let categoryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
 
     weak var delegate: ViewModelDelegate?
-    var recipeManager = CategoryManager()
+    var categoryManager = CategoryManager()
 
-    init() {
-        recipeManager.delegate = self
-    }
 
     //TODO: where to call self > [self] or self.evaluateResult
     func getCategoryData() {
-        recipeManager.getData(url: recipeURL) { [self] category in
+        categoryManager.getData(url: categoryURL) { [self] category in
             evaluateResult(result: category)
         }
     }
@@ -40,7 +37,6 @@ class CategoryViewModel: CategoryManagerDelegate {
     }
 
     func didFetchCategory(_ category: [CategoryModel]) {
-        print(#function)
         //do any additional preparation on category for UI in here, then pass to VC
         let sortedCategory: [CategoryModel] = category.sorted { $0.dessertName < $1.dessertName }
         self.delegate?.prepareCategoryUI(with: sortedCategory)
