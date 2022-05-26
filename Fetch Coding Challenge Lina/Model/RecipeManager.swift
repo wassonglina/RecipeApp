@@ -8,50 +8,40 @@
 import Foundation
 
 protocol RecipeManagerDelegate {
-    func didFetchRecipes(recipes: [RecipeModel])
+    func didFetchCategory(_ recipes: [RecipeModel])
     func didCatchError(error: Error)
 }
 
 struct RecipeManager {
-    
-    let categoryDessertURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
 
-    var delegate: RecipeManagerDelegate?        //no weak because struct?
+    var delegate: RecipeManagerDelegate?
     
     func performNetworkRequest(with urlString: String) {
-        
-        if let url = URL(string: urlString) {
-            let session = URLSession(configuration: .default)
-            print(session)
-            let task = session.dataTask(with: url) { data, response, error in
-                if error != nil {
-                    print("Error performing network request.")
-                    self.delegate?.didCatchError(error: error!)
-                    return
-                }
-                if let safeData = data {
-                    if let dessertRecipes = self.parseJSON(safeData) {
-                        self.delegate?.didFetchRecipes(recipes: dessertRecipes)
-                    }
+        //return failure or throw in future version
+        guard let url = URL(string: urlString) else { return }
+        let task = URLSession.shared
+            .dataTask(with: url) { data, response, error in
+                if let error = error {
+                    self.delegate?.didCatchError(error: error)
+                } else if let safeData = data, let recipesData = self.parseJSON(safeData) {
+                    self.delegate?.didFetchCategory(recipesData)
                 }
             }
-            task.resume()
-        }
+        task.resume()
     }
     
-    func parseJSON(_ recipesData: Data) -> [RecipeModel]? {       //return Model
+    func parseJSON(_ recipesData: Data) -> [RecipeModel]? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(CategoryPayload.self, from: recipesData)
-
-            //TODO: use map or compactMap?
+            //TODO: sort data here? use map or compactMap?
             let recipeModels: [RecipeModel] = decodedData.meals
+            //move view model
                 .sorted { $0.strMeal < $1.strMeal }
                 .compactMap { RecipeModel(dessertName: $0.strMeal, id: $0.idMeal) }
             return recipeModels
         } catch {
             self.delegate?.didCatchError(error: error)
-            print("Error parsing JSON")
             return nil
         }
     }

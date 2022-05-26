@@ -11,16 +11,19 @@ import UIKit
 
 class CategoryViewController: UIViewController {
 
+    private var dataSource: UITableViewDiffableDataSource<Int, RecipeModel>!
+
+    let categoryViewModel = CategoryViewModel()   //TODO: outside of viewDidLoad?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .cyan
 
-        var recipeManager = RecipeManager()
-        recipeManager.delegate = self
+        //TODO: move to ViewModel
+        categoryViewModel.getCategoryData()
 
-        recipeManager.performNetworkRequest(with: "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert")
-
+        //TODO: leave here?
         let tableView = UITableView()
         view.addSubview(tableView)
         tableView.backgroundColor = .magenta
@@ -41,34 +44,47 @@ class CategoryViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-
-    private var dataSource: UITableViewDiffableDataSource<Int, RecipeModel>!
 }
 
 //MARK: - Extension UITableViewDelegate
 
 extension CategoryViewController: UITableViewDelegate {
 
+    //TODO: when cell is tapped get ingredients with addtl. network request with mealID > move to Detail VC and populate UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = DetailViewController()
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
-//MARK: - Extension UITableViewDelegate
 
-extension CategoryViewController: RecipeManagerDelegate {
+    //TODO:  to View Model?
+//    func didFetchCategory(_ recipes: [RecipeModel]) {
+//        var snapshot = NSDiffableDataSourceSnapshot<Int, RecipeModel>()
+//        snapshot.appendSections([0])
+//        snapshot.appendItems(recipes)
+//        dataSource.apply(snapshot)
+//    }
 
-    func didFetchRecipes(recipes: [RecipeModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, RecipeModel>()
+//    func didCatchError(error: Error) {
+//        //handle Errors here
+//        print("Error")
+//    }
 
-        snapshot.appendSections([0])
-        snapshot.appendItems(recipes)
-        dataSource.apply(snapshot)
+
+//MARK: - Extension ViewModelDelegate
+
+extension CategoryViewController: ViewModelDelegate {
+
+    func prepareCategoryUI(_ category: [RecipeModel]) {
+        print(#function, category)
     }
 
     func didCatchError(error: Error) {
         //handle Errors here
         print("Error")
     }
+
+    //TODO:  to View Model?
+
 }

@@ -21,6 +21,7 @@
 		FCA450FC283E930600F5DD76 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FB283E930600F5DD76 /* RecipeManager.swift */; };
 		FCA450FE283E9DE700F5DD76 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FD283E9DE700F5DD76 /* RecipeData.swift */; };
 		FCA45103283EA32C00F5DD76 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45102283EA32C00F5DD76 /* RecipeModel.swift */; };
+		FCA45105283FE05900F5DD76 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45104283FE05900F5DD76 /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		FCA450FB283E930600F5DD76 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		FCA450FD283E9DE700F5DD76 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
 		FCA45102283EA32C00F5DD76 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
+		FCA45104283FE05900F5DD76 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				FCA450C3283D56F800F5DD76 /* AppDelegate.swift */,
 				FCA450C5283D56F800F5DD76 /* SceneDelegate.swift */,
 				FCA450FF283EA2D900F5DD76 /* Model */,
+				FCA45106283FE05F00F5DD76 /* View Model */,
 				FCA45100283EA2E000F5DD76 /* View */,
 				FCA45101283EA2F100F5DD76 /* Controller */,
 				FCA450C9283D56F800F5DD76 /* Main.storyboard */,
@@ -164,6 +167,14 @@
 				FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		FCA45106283FE05F00F5DD76 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCA45104283FE05900F5DD76 /* CategoryViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +315,7 @@
 				FCA450FC283E930600F5DD76 /* RecipeManager.swift in Sources */,
 				FCA45103283EA32C00F5DD76 /* RecipeModel.swift in Sources */,
 				FCA450C4283D56F800F5DD76 /* AppDelegate.swift in Sources */,
+				FCA45105283FE05900F5DD76 /* CategoryViewModel.swift in Sources */,
 				FCA450C6283D56F800F5DD76 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

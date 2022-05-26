@@ -24,7 +24,7 @@ class RecipeTableViewCell: UITableViewCell {
 
         contentView.addSubview(categoryRecipeLabel)
         categoryRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
-        categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)  //make font adjustable to label length
+        categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)  //TODO: make font adjustable to label length
 
         NSLayoutConstraint.activate([
             categoryImageView.widthAnchor.constraint(equalToConstant: 80),
@@ -45,6 +45,7 @@ class RecipeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //set title of each cell
     func setTitle(_ title: String) {
         categoryRecipeLabel.text = title
     }
