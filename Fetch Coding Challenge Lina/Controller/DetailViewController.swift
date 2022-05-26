@@ -7,9 +7,10 @@
 
 import UIKit
 
+//rename InstructionViewController
 class DetailViewController: UIViewController {
 
-    let dummyInstruction = "Pre-heat the oven to 180C/350F/Gas 4. Grease an 18cm/7in round cake tin, line the base with greaseproof paper and grease the paper.\r\nCream the butter and sugar together in a bowl until pale and fluffy. Beat in the eggs, one at a time, beating the mixture well between each one and adding a tablespoon of the flour with the last egg to prevent the mixture curdling."
+   private let dummyInstruction = "Pre-heat the oven to 180C/350F/Gas 4. Grease an 18cm/7in round cake tin, line the base with greaseproof paper and grease the paper.\r\nCream the butter and sugar together in a bowl until pale and fluffy. Beat in the eggs, one at a time, beating the mixture well between each one and adding a tablespoon of the flour with the last egg to prevent the mixture curdling."
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class DetailViewController: UIViewController {
         recipeTitleLabel.text = "Chocolate Cake"
         recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        //TODO: make scrollable
+
         let instructionsLabel = UILabel()
         view.addSubview(instructionsLabel)
         instructionsLabel.translatesAutoresizingMaskIntoConstraints = false

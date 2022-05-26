@@ -19,10 +19,9 @@ class CategoryViewModel {
     weak var delegate: ViewModelDelegate?
     var categoryManager = CategoryManager()
 
-
     //TODO: where to call self > [self] or self.evaluateResult
     func getCategoryData() {
-        categoryManager.getData(url: categoryURL) { [self] category in
+        categoryManager.getCategoryData(url: categoryURL) { [self] category in
             evaluateResult(result: category)
         }
     }

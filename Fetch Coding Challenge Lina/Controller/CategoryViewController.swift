@@ -14,6 +14,7 @@ class CategoryViewController: UIViewController {
     private var dataSource: UITableViewDiffableDataSource<Int, CategoryModel>!
 
     let categoryViewModel = CategoryViewModel()   //TODO: outside of viewDidLoad?
+    let detailViewModel = DetailViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,11 @@ extension CategoryViewController: UITableViewDelegate {
 
     //TODO: when cell is tapped get ingredients with addtl. network request with mealID > move to Detail VC and populate UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if let selectedItem = dataSource.itemIdentifier(for: indexPath) {
+            detailViewModel.getRecipeForID(id: selectedItem.id)
+        }
+
         let detailViewController = DetailViewController()
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
