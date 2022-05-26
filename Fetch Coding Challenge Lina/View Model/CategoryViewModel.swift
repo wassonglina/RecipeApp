@@ -8,28 +8,41 @@
 import Foundation
 
 protocol ViewModelDelegate: AnyObject {
-    func prepareCategoryUI(with category: [RecipeModel])
+    func prepareCategoryUI(with category: [CategoryModel])
     func didCatchError(error: Error)
 }
 
-class CategoryViewModel: RecipeManagerDelegate {
+class CategoryViewModel: CategoryManagerDelegate {
 
     private let recipeURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
 
     weak var delegate: ViewModelDelegate?
-    var recipeManager = RecipeManager()
+    var recipeManager = CategoryManager()
 
     init() {
         recipeManager.delegate = self
     }
 
+    //TODO: where to call self > [self] or self.evaluateResult
     func getCategoryData() {
-        recipeManager.performNetworkRequest(with: recipeURL)
+        recipeManager.getData(url: recipeURL) { [self] category in
+            evaluateResult(result: category)
+        }
     }
 
-    func didFetchCategory(_ category: [RecipeModel]) {
+    func evaluateResult(result: (Result<[CategoryModel], Error>)) {
+        switch result {
+        case .success(let categoryData):
+            didFetchCategory(categoryData)
+        case .failure(let error):
+            didCatchError(error: error)
+        }
+    }
+
+    func didFetchCategory(_ category: [CategoryModel]) {
+        print(#function)
         //do any additional preparation on category for UI in here, then pass to VC
-        let sortedCategory: [RecipeModel] = category.sorted { $0.dessertName < $1.dessertName }
+        let sortedCategory: [CategoryModel] = category.sorted { $0.dessertName < $1.dessertName }
         self.delegate?.prepareCategoryUI(with: sortedCategory)
     }
 

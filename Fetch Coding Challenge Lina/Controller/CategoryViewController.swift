@@ -11,14 +11,12 @@ import UIKit
 
 class CategoryViewController: UIViewController {
 
-    private var dataSource: UITableViewDiffableDataSource<Int, RecipeModel>!
+    private var dataSource: UITableViewDiffableDataSource<Int, CategoryModel>!
 
     let categoryViewModel = CategoryViewModel()   //TODO: outside of viewDidLoad?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .cyan
 
         categoryViewModel.delegate = self
         categoryViewModel.getCategoryData()
@@ -26,16 +24,17 @@ class CategoryViewController: UIViewController {
         //TODO: leave here?
         let tableView = UITableView()
         view.addSubview(tableView)
-        tableView.backgroundColor = .magenta
+        tableView.backgroundColor = .gray
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        dataSource = UITableViewDiffableDataSource<Int, RecipeModel>(tableView: tableView) { tableView, indexPath, item in
+        tableView.dataSource = dataSource
+        tableView.delegate = self
+        tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.identifier)
+        
+        dataSource = UITableViewDiffableDataSource<Int, CategoryModel>(tableView: tableView) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
             cell.setTitle(item.dessertName)
             return cell
         }
-        tableView.dataSource = dataSource
-        tableView.delegate = self
-        tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.identifier)
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -60,9 +59,8 @@ extension CategoryViewController: UITableViewDelegate {
 //MARK: - Extension ViewModelDelegate
 
 extension CategoryViewController: ViewModelDelegate {
-
-    func prepareCategoryUI(with category: [RecipeModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, RecipeModel>()
+    func prepareCategoryUI(with category: [CategoryModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, CategoryModel>()
         snapshot.appendSections([0])
         snapshot.appendItems(category)
         dataSource.apply(snapshot)
