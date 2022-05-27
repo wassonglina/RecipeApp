@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol DetailViewModelDelegate {
+    func prepareDetailUI(with recipe: [RecipeModel])
+    func didCatchError(error: Error)
+}
+
 
 class DetailViewModel {
 
@@ -15,14 +20,41 @@ class DetailViewModel {
 //TODO: instanciate new CategoryManager()?
     let categoryManager = CategoryManager()
 
+    var delegate: DetailViewModelDelegate?
+
     func getRecipeForID(id: String) {
         let instructionURL = "\(InstructionUrl)\(id)"
 
-        categoryManager.getRecipeData(url: instructionURL) { recipe in
-            print(recipe)
+        categoryManager.getRecipeData(url: instructionURL) { [self] recipe in
+            evaluateResult(result: recipe)
         }
     }
 
+    //TODO: Repeat (in CategoryViewModel)
+    func evaluateResult(result: (Result<[RecipeModel], Error>)) {
+        switch result {
+        case .success(let recipeData):
+            didFetchRecipe(recipeData)
+        case .failure(let error):
+            didCatchError(error: error)
+        }
+    }
+
+    func didFetchRecipe(_ recipe: [RecipeModel]) {
+        //do any additional preparation on category for UI in here, then pass to VC
+
+        print(#function, recipe)
+
+//        let sortedRecipe: [RecipeModel] = recipe.filter {
+//            $0 != ""
+//        }
+        
+  //      self.delegate?.prepareDetailUI(with: sortedRecipe)
+    }
+
+    func didCatchError(error: Error) {
+        self.delegate?.didCatchError(error: error)
+    }
     
 
 }

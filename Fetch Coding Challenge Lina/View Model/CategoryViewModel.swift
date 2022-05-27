@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ViewModelDelegate: AnyObject {
+protocol CategoryViewModelDelegate: AnyObject {
     func prepareCategoryUI(with category: [CategoryModel])
     func didCatchError(error: Error)
 }
@@ -16,7 +16,7 @@ class CategoryViewModel {
 
     private let categoryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
 
-    weak var delegate: ViewModelDelegate?
+    weak var delegate: CategoryViewModelDelegate?
     var categoryManager = CategoryManager()
 
     //TODO: where to call self > [self] or self.evaluateResult

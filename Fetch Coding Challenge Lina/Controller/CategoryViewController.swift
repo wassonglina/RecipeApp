@@ -64,7 +64,8 @@ extension CategoryViewController: UITableViewDelegate {
 
 //MARK: - Extension ViewModelDelegate
 
-extension CategoryViewController: ViewModelDelegate {
+extension CategoryViewController: CategoryViewModelDelegate {
+
     func prepareCategoryUI(with category: [CategoryModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, CategoryModel>()
         snapshot.appendSections([0])
