@@ -15,7 +15,6 @@ protocol CategoryViewModelDelegate: AnyObject {
 class CategoryViewModel {
 
     private let categoryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
-
     weak var delegate: CategoryViewModelDelegate?
     var categoryManager = CategoryManager()
 
@@ -37,7 +36,7 @@ class CategoryViewModel {
 
     func didFetchCategory(_ category: [CategoryModel]) {
         //do any additional preparation on category for UI in here, then pass to VC
-        let sortedCategory: [CategoryModel] = category.sorted { $0.dessertName < $1.dessertName }
+        let sortedCategory: [CategoryModel] = category.sorted { $0.name < $1.name }
         self.delegate?.prepareCategoryUI(with: sortedCategory)
     }
 

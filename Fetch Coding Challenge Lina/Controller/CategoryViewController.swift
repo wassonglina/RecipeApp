@@ -33,7 +33,7 @@ class CategoryViewController: UIViewController {
         
         dataSource = UITableViewDiffableDataSource<Int, CategoryModel>(tableView: tableView) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
-            cell.setTitle(item.dessertName)
+            cell.setTitle(item.name)
             return cell
         }
 
@@ -56,7 +56,6 @@ extension CategoryViewController: UITableViewDelegate {
         if let selectedItem = dataSource.itemIdentifier(for: indexPath) {
             detailViewModel.getRecipeForID(id: selectedItem.id)
         }
-
         let detailViewController = DetailViewController()
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }

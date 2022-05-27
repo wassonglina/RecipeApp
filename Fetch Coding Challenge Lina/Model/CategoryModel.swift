@@ -8,24 +8,15 @@
 import Foundation
 
 struct CategoryModel: Hashable {
-
-    let dessertName: String
+    let name: String
 //    let image: imge
     let id: String  //TODO: or type Int?
 }
 
 
 struct RecipeModel {
-
-    let dessertName: String
-    let id: String
+    let name: String
     let instruction: String
 
-    let ingredient1: String
-    let ingredient2: String
-    let ingredient3: String
-
-    let measurement1: String
-    let measurement2: String
-    let measurement3: String
+    let ingredients: [(String, String)]
 }

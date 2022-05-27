@@ -13,11 +13,14 @@ class DetailViewController: UIViewController {
 
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
+    let detailViewModel = DetailViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .lightGray
+
+        detailViewModel.delegate = self
 
         addScrollView()
         addStackView()
@@ -114,3 +117,15 @@ class DetailViewController: UIViewController {
     }
 }
 
+
+
+extension DetailViewController: DetailViewModelDelegate {
+
+    func prepareDetailUI(with recipe: [RecipeModel]) {
+        print(#function, recipe)
+    }
+
+    func didCatchError(error: Error) {
+        print(#function, error)
+    }
+}

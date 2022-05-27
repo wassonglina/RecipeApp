@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Metal
 
 struct CategoryManager {
 
@@ -59,19 +60,27 @@ struct CategoryManager {
         do {
             let decodedData = try decoder.decode(CategoryPayload.self, from: encodedData)
             let categoryModel: [CategoryModel] = decodedData.meals
-                .compactMap { CategoryModel(dessertName: $0.strMeal, id: $0.idMeal) }
+                .compactMap { CategoryModel(name: $0.strMeal, id: $0.idMeal) }
             return categoryModel
         }
     }
 
     //TODO:  for details
     private func parseJSONRecipe(_ encodedData: Data) throws -> [RecipeModel] {
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try decoder.decode(RecipePayload.self, from: encodedData)
-            let recipeModel: [RecipeModel] = decodedData.meals
-                .compactMap { RecipeModel(dessertName: $0.strMeal, id: $0.idMeal, instruction: $0.strInstructions, ingredient1: $0.strIngredient1, ingredient2: $0.strIngredient2, ingredient3: $0.strIngredient3, measurement1: $0.strMeasure1, measurement2: $0.strMeasure2, measurement3: $0.strMeasure3) }
-            return recipeModel
+
+        if let i = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String : [[String : String?]]] {
+
+            print(i)
+
+            if let meals = i["meals"], let meal = meals.first, let title = meal["strMeal"] as? String {     //as? takes away both optionals
+                let ingredients = (1...20)
+                    .compactMap { (meal["strIngredient\($0)"], meal["strMeasure\($0)"]) as? (String, String) }
+                    .filter { $0 != ("", "") }       //check if always > no strIngredient & no strMeasure
+                print(ingredients)
+            }
+
         }
+        return []
+        //        }
     }
 }
