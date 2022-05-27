@@ -13,7 +13,16 @@ class DetailViewController: UIViewController {
 
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
-    let detailViewModel = DetailViewModel()
+    let detailViewModel: DetailViewModel
+
+    init(detailViewModel: DetailViewModel) {
+        self.detailViewModel = detailViewModel
+        super.init(nibName: nil, bundle: nil)       //look up
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +30,8 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .lightGray
 
         detailViewModel.delegate = self
+
+        detailViewModel.getRecipe()  //no idea about id
 
         addScrollView()
         addStackView()

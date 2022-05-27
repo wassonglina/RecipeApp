@@ -17,12 +17,18 @@ class DetailViewModel {
 
     private let InstructionUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
 
+    private let id: String
+
 //TODO: instanciate new CategoryManager()? with let
     let categoryManager = CategoryManager()
 
     weak var delegate: DetailViewModelDelegate?
 
-    func getRecipeForID(id: String) {
+    init(id: String) {
+        self.id = id
+    }
+
+    func getRecipe() {
         let instructionURL = "\(InstructionUrl)\(id)"
         categoryManager.getRecipeData(url: instructionURL) { [self] recipe in
             evaluateResult(result: recipe)

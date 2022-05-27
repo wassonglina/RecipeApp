@@ -14,7 +14,6 @@ class CategoryViewController: UIViewController {
     private var dataSource: UITableViewDiffableDataSource<Int, CategoryModel>!
 
     let categoryViewModel = CategoryViewModel()   //TODO: outside of viewDidLoad?
-    let detailViewModel = DetailViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +53,10 @@ extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if let selectedItem = dataSource.itemIdentifier(for: indexPath) {
-            detailViewModel.getRecipeForID(id: selectedItem.id)
+            let detailViewModel = DetailViewModel(id: selectedItem.id)
+            let detailViewController = DetailViewController(detailViewModel: detailViewModel)  //look up
+            self.navigationController?.pushViewController(detailViewController, animated: true)
         }
-        let detailViewController = DetailViewController()
-        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
