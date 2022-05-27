@@ -17,7 +17,6 @@
 		FCA450E7283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */; };
 		FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */; };
 		FCA450F8283D692E00F5DD76 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */; };
-		FCA450FA283D69D100F5DD76 /* DetailViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F9283D69D100F5DD76 /* DetailViewController2.swift */; };
 		FCA450FC283E930600F5DD76 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FB283E930600F5DD76 /* CategoryManager.swift */; };
 		FCA450FE283E9DE700F5DD76 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FD283E9DE700F5DD76 /* CategoryData.swift */; };
 		FCA45103283EA32C00F5DD76 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45102283EA32C00F5DD76 /* CategoryModel.swift */; };
@@ -58,7 +57,6 @@
 		FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
-		FCA450F9283D69D100F5DD76 /* DetailViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController2.swift; sourceTree = "<group>"; };
 		FCA450FB283E930600F5DD76 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		FCA450FD283E9DE700F5DD76 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		FCA45102283EA32C00F5DD76 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 		FCA45101283EA2F100F5DD76 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FCA450F9283D69D100F5DD76 /* DetailViewController2.swift */,
 				FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */,
 				FCA4510D28407D1C00F5DD76 /* DetailViewController.swift */,
 			);
@@ -319,7 +316,6 @@
 				FCA450F8283D692E00F5DD76 /* RecipeTableViewCell.swift in Sources */,
 				FCA450FE283E9DE700F5DD76 /* CategoryData.swift in Sources */,
 				FCA45108284012B700F5DD76 /* DetailViewModel.swift in Sources */,
-				FCA450FA283D69D100F5DD76 /* DetailViewController2.swift in Sources */,
 				FCA450FC283E930600F5DD76 /* CategoryManager.swift in Sources */,
 				FCA45103283EA32C00F5DD76 /* CategoryModel.swift in Sources */,
 				FCA450C4283D56F800F5DD76 /* AppDelegate.swift in Sources */,
