@@ -5,7 +5,7 @@
 //  Created by Lina on 5/24/22.
 //
 
-import Foundation
+import Kingfisher
 import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
@@ -19,18 +19,21 @@ class RecipeTableViewCell: UITableViewCell {
 
         contentView.addSubview(categoryImageView)
         categoryImageView.translatesAutoresizingMaskIntoConstraints = false
-        categoryImageView.image = UIImage(systemName: "sun.max")
-        categoryImageView.contentMode = .scaleAspectFit
+
+        let url = URL(string: "https://www.themealdb.com/images/media/meals/yqqqwu1511816912.jpg")
+        categoryImageView.kf.setImage(with: url)
+
+//        categoryImageView.contentMode = .scaleAspectFit
 
         contentView.addSubview(categoryRecipeLabel)
         categoryRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
         categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)  //TODO: make font adjustable to label length
+        let heightConstraint = categoryImageView.heightAnchor.constraint(equalTo: categoryImageView.widthAnchor)
+        heightConstraint.priority = .defaultHigh
 
         NSLayoutConstraint.activate([
             categoryImageView.widthAnchor.constraint(equalToConstant: 80),
-            //     categoryImageView.heightAnchor.constraint(equalTo: categoryImageView.widthAnchor),       //TODO: conflicting width constraint??
-            categoryImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
+            heightConstraint,
             categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             categoryImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
