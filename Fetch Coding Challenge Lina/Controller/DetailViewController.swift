@@ -98,7 +98,7 @@ class DetailViewController: UIViewController {
 
     private func addIngredientStackView() {
         stackView.addArrangedSubview(ingredientStackView)
-        ingredientStackView.spacing = 25
+        ingredientStackView.spacing = 15
         ingredientStackView.backgroundColor = .systemMint
         ingredientStackView.axis = .vertical
     }
@@ -123,15 +123,19 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: DetailViewModelDelegate {
 
-    func prepareDetailUI(with recipe: RecipeModel) {
-        print(#function, recipe)
+
+    func prepareDetailUI(name: String, instruction: String, ingredients: [(String, String)]) {
 
         DispatchQueue.main.async {
-            self.titleLabel.text = recipe.name
-            self.instructionLabel.text = recipe.instruction
+            self.titleLabel.text = name
+            self.instructionLabel.text = instruction
 
-            recipe.ingredients.forEach { (ing, mea) in
+            ingredients.forEach { (ing, mea) in
                 let ingredientLabel = UILabel()
+//                let attributedText = NSAttributedString(string: mea, attributes: [
+//                    NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)
+//                ])
+//                ingredientLabel.attributedText = attributedText
                 ingredientLabel.text = "\(mea) \(ing)"
                 self.ingredientStackView.addArrangedSubview(ingredientLabel)
             }
