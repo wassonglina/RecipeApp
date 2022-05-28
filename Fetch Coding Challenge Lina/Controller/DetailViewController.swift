@@ -5,8 +5,9 @@
 //  Created by Lina on 5/26/22.
 //
 
-import Foundation
+
 import UIKit
+import Kingfisher
 
 
 class DetailViewController: UIViewController {
@@ -18,6 +19,7 @@ class DetailViewController: UIViewController {
     private let instructionLabel = UILabel()
     private let titleLabel = UILabel()
     private let ingredientStackView = UIStackView()
+    private let imageView = UIImageView()
 
     init(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
@@ -31,11 +33,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .lightGray
-
         detailViewModel.delegate = self
-
         detailViewModel.getRecipe()  //no idea about id
+        view.backgroundColor = .white
 
         addScrollView()
         addStackView()
@@ -77,22 +77,21 @@ class DetailViewController: UIViewController {
 
     private func addTitleLabel() {
         titleLabel.font = .boldSystemFont(ofSize: 24)
-        titleLabel.backgroundColor = .magenta
         titleLabel.numberOfLines = 0
         stackView.addArrangedSubview(titleLabel)
     }
 
     private func addImageView() {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "sun.max")
+        imageView.widthAnchor.constraint(equalToConstant: 270).isActive = true
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
         stackView.addArrangedSubview(imageView)
+     //   imageView.layer.cornerRadius = 5  //TODO: where to set?
     }
 
     private func addIngredientsTitleLabel() {
         let ingredientsLabel = UILabel()
         ingredientsLabel.text = "Ingredients"
         ingredientsLabel.font = .boldSystemFont(ofSize: 19)
-        ingredientsLabel.backgroundColor = .yellow
         stackView.addArrangedSubview(ingredientsLabel)
     }
 
@@ -107,7 +106,6 @@ class DetailViewController: UIViewController {
         let instructionLabel = UILabel()
         instructionLabel.text = "Instructions"
         instructionLabel.font = .boldSystemFont(ofSize: 19)
-        instructionLabel.backgroundColor = .yellow
         stackView.addArrangedSubview(instructionLabel)
     }
 
@@ -120,23 +118,26 @@ class DetailViewController: UIViewController {
 }
 
 
-
 extension DetailViewController: DetailViewModelDelegate {
 
 
-    func prepareDetailUI(name: String, instruction: String, ingredients: [(String, String)]) {
+    func prepareDetailUI(name: String, image: String, ingredients: [(String, String)], instruction: String) {
 
         DispatchQueue.main.async {
             self.titleLabel.text = name
+
+            let url = URL(string: image)
+            self.imageView.kf.setImage(with: url)
+
             self.instructionLabel.text = instruction
 
-            ingredients.forEach { (ing, mea) in
+            ingredients.forEach { (ingredient, measurement) in
                 let ingredientLabel = UILabel()
 //                let attributedText = NSAttributedString(string: mea, attributes: [
 //                    NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)
 //                ])
 //                ingredientLabel.attributedText = attributedText
-                ingredientLabel.text = "\(mea) \(ing)"
+                ingredientLabel.text = "\(measurement) \(ingredient)"
                 self.ingredientStackView.addArrangedSubview(ingredientLabel)
             }
         }

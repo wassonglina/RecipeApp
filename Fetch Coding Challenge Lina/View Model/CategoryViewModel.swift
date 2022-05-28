@@ -34,6 +34,7 @@ class CategoryViewModel {
         }
     }
 
+    //TODO: prepare data for UI without Category Model !!
     func didFetchCategory(_ category: [CategoryModel]) {
         //do any additional preparation on category for UI in here, then pass to VC
         let sortedCategory: [CategoryModel] = category.sorted { $0.name < $1.name }

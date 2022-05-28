@@ -63,7 +63,7 @@ struct CategoryManager {
         do {
             let decodedData = try decoder.decode(CategoryPayload.self, from: encodedData)
             let categoryModel: [CategoryModel] = decodedData.meals
-                .compactMap { CategoryModel(name: $0.strMeal, id: $0.idMeal) }
+                .compactMap { CategoryModel(name: $0.strMeal, image: $0.strMealThumb, id: $0.idMeal) }
             return categoryModel
         }
     }
@@ -72,15 +72,13 @@ struct CategoryManager {
     private func parseJSONRecipe(_ encodedData: Data) throws -> RecipeModel {
 
         if let decodedData = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String : [[String : String?]]] {
-
-            print(decodedData)
-
-            if let meals = decodedData["meals"], let meal = meals.first, let title = meal["strMeal"] as? String, let instruction = meal["strInstructions"] as? String {     //as? takes away both optionals
+            if let meals = decodedData["meals"], let meal = meals.first, let title = meal["strMeal"] as? String, let instruction = meal["strInstructions"] as? String, let image = meal["strMealThumb"] as? String {     //as? takes away both optionals
                 let ingredients = (1...20)
                     .compactMap { (meal["strIngredient\($0)"], meal["strMeasure\($0)"]) as? (String, String) }
                     .filter { $0 != ("", "") }       //check if always > no strIngredient & no strMeasure
+                print(image)
 
-                return RecipeModel(name: title, instruction: instruction, ingredients: ingredients)
+                return RecipeModel(name: title, instruction: instruction, image: image, ingredients: ingredients)
             }
         }
         throw CategoryError.unexpectedFormat

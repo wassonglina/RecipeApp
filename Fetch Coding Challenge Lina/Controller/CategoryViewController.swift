@@ -32,7 +32,9 @@ class CategoryViewController: UIViewController {
         
         dataSource = UITableViewDiffableDataSource<Int, CategoryModel>(tableView: tableView) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
-            cell.setTitle(item.name)
+            cell.setTitle(with: item.name)
+            cell.setImage(with: item.image)
+
             return cell
         }
 
@@ -49,7 +51,6 @@ class CategoryViewController: UIViewController {
 
 extension CategoryViewController: UITableViewDelegate {
 
-    //TODO: when cell is tapped get ingredients with addtl. network request with mealID > move to Detail VC and populate UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if let selectedItem = dataSource.itemIdentifier(for: indexPath) {

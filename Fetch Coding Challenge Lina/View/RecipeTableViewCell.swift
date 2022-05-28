@@ -4,9 +4,9 @@
 //
 //  Created by Lina on 5/24/22.
 //
-
-import Kingfisher
 import UIKit
+import Kingfisher
+
 
 class RecipeTableViewCell: UITableViewCell {
 
@@ -20,24 +20,19 @@ class RecipeTableViewCell: UITableViewCell {
         contentView.addSubview(categoryImageView)
         categoryImageView.translatesAutoresizingMaskIntoConstraints = false
 
-        let url = URL(string: "https://www.themealdb.com/images/media/meals/yqqqwu1511816912.jpg")
-        categoryImageView.kf.setImage(with: url)
-
-//        categoryImageView.contentMode = .scaleAspectFit
-
         contentView.addSubview(categoryRecipeLabel)
         categoryRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
         categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)  //TODO: make font adjustable to label length
+
         let heightConstraint = categoryImageView.heightAnchor.constraint(equalTo: categoryImageView.widthAnchor)
-        heightConstraint.priority = .defaultHigh
+        heightConstraint.priority = .defaultHigh        //set to .defaultHigh priority otherweise conflicting constraints in cell
 
         NSLayoutConstraint.activate([
-            categoryImageView.widthAnchor.constraint(equalToConstant: 80),
+            categoryImageView.widthAnchor.constraint(equalToConstant: 90),
             heightConstraint,
-            categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            categoryImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            categoryImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
             categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            //     recipeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
 
             categoryRecipeLabel.leadingAnchor.constraint(equalTo: categoryImageView.trailingAnchor, constant: 15),
             categoryRecipeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
@@ -49,8 +44,14 @@ class RecipeTableViewCell: UITableViewCell {
     }
 
     //set title of each cell
-    func setTitle(_ title: String) {
+    func setTitle(with title: String) {
         categoryRecipeLabel.text = title
+    }
+
+    //TODO: make image load faster when scrolling fast
+    func setImage(with stringURL: String) {
+        let url = URL(string: stringURL)
+        categoryImageView.kf.setImage(with: url)
     }
 }
 

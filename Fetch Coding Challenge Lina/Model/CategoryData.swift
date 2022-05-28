@@ -12,7 +12,7 @@ struct CategoryPayload: Codable {
 
     struct Meals: Codable {
         let strMeal: String
-        //    let strMealThumb: String      //TODO: How decode images?
+        let strMealThumb: String
         let idMeal: String
     }
 }
@@ -21,8 +21,8 @@ struct RecipePayload: Codable {
     let meals: [Recipe]
 
     struct Recipe: Codable {
-        //meal and id shouldn't change > get again?
         let strMeal: String
+        let strMealThumb: String
         let strInstructions: String
 
         let strIngredient1: String
@@ -45,7 +45,6 @@ struct RecipePayload: Codable {
         let strIngredient18: String
         let strIngredient19: String
         let strIngredient20: String
-        // ... 20
 
         let strMeasure1: String
         let strMeasure2: String
@@ -67,7 +66,6 @@ struct RecipePayload: Codable {
         let strMeasure18: String
         let strMeasure19: String
         let strMeasure20: String
-        // ... 20
     }
 }
 

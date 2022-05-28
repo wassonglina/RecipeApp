@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DetailViewModelDelegate: AnyObject {
-    func prepareDetailUI(name: String, instruction: String, ingredients: [(String, String)])
+    func prepareDetailUI(name: String, image: String, ingredients: [(String, String)], instruction: String)
     func didCatchError(error: Error)
 }
 
@@ -47,10 +47,8 @@ class DetailViewModel {
 
     func didFetchRecipe(_ recipe: RecipeModel) {
         //do any additional preparation on category for UI in here, then pass to VC
-
         let instruction = recipe.instruction.replacingOccurrences(of: "\r\n", with: "\n\n")
-
-        self.delegate?.prepareDetailUI(name: recipe.name, instruction: instruction, ingredients: recipe.ingredients)
+        self.delegate?.prepareDetailUI(name: recipe.name, image: recipe.image, ingredients: recipe.ingredients, instruction: instruction)
     }
 
     func didCatchError(error: Error) {
