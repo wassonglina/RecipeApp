@@ -15,6 +15,12 @@ class DetailViewController: UIViewController {
     private let stackView = UIStackView()
     let detailViewModel: DetailViewModel
 
+    private let instructionLabel = UILabel()
+    private let ingredientLabel = UILabel()
+    private let measurementLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let ingredientStackView = UIStackView()
+
     init(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
         super.init(nibName: nil, bundle: nil)       //look up
@@ -72,8 +78,6 @@ class DetailViewController: UIViewController {
     }
 
     private func addTitleLabel() {
-        let titleLabel = UILabel()
-        titleLabel.text = "Chocolate Cake"
         titleLabel.font = .boldSystemFont(ofSize: 24)
         titleLabel.backgroundColor = .magenta
         titleLabel.numberOfLines = 0
@@ -95,19 +99,11 @@ class DetailViewController: UIViewController {
     }
 
     private func addIngredientStackView() {
-
-        let ingredientStackView = UIStackView()
         stackView.addArrangedSubview(ingredientStackView)
         ingredientStackView.spacing = 25
         ingredientStackView.backgroundColor = .systemMint
-
-        let measurementLabel = UILabel()
         ingredientStackView.addArrangedSubview(measurementLabel)
-        measurementLabel.text = "Measurement"
-
-        let ingredientLabel = UILabel()
         ingredientStackView.addArrangedSubview(ingredientLabel)
-        ingredientLabel.text = "Ingredients"
     }
 
     private func addInstructionTitleLabel() {
@@ -119,12 +115,10 @@ class DetailViewController: UIViewController {
     }
 
     private func addInstructionsLabel() {
-        let instructionLabel = UILabel()
         instructionLabel.numberOfLines = 0
         stackView.addArrangedSubview(instructionLabel)
         instructionLabel.backgroundColor = .link
         instructionLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -70).isActive = true  //TODO: check for landscape
-        instructionLabel.text = "Pre-heat the oven to 180C/350F/Gas 4. Grease an 18cm/7in round cake tin, line the base with greaseproof paper and grease the paper.\r\nCream the butter and sugar together in a bowl until pale and fluffy. Beat in the eggs, one at a time, beating the mixture well between each one and adding a tablespoon of the flour with the last egg to prevent the mixture curdling. Pre-heat the oven to 180C/350F/Gas 4. Grease an 18cm/7in round cake tin, line the base with greaseproof paper and grease the paper.\r\nCream the butter and sugar together in a bowl until pale and fluffy. Beat in the eggs, one at a time, beating the mixture well between each one and adding a tablespoon of the flour with the last egg to prevent the mixture curdling. Pre-heat the oven to 180C/350F/Gas 4. Grease an 18cm/7in round cake tin, line the base with greaseproof paper and grease the paper.\r\nCream the butter and sugar together in a bowl until pale and fluffy. Beat in the eggs, one at a time, beating the mixture well between each one and adding a tablespoon of the flour with the last egg to prevent the mixture curdling. Pre-heat the oven to 180C/350F/Gas 4. Grease an 18cm/7in round cake tin, line the base with greaseproof paper and grease the paper.\r\nCream the butter and sugar together in a bowl until pale and fluffy. Beat in the eggs, one at a time, beating the mixture well between each one and adding a tablespoon of the flour with the last egg to prevent the mixture curdling."
     }
 }
 
@@ -132,11 +126,52 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: DetailViewModelDelegate {
 
-    func prepareDetailUI(with recipe: [RecipeModel]) {
+    func prepareDetailUI(with recipe: RecipeModel) {
         print(#function, recipe)
+
+        DispatchQueue.main.async {
+            self.titleLabel.text = recipe.name
+            self.ingredientLabel.text = recipe.ingredients[0].0
+            self.measurementLabel.text = recipe.ingredients[0].1
+            self.instructionLabel.text = recipe.instruction
+
+//            for i in 0..<recipe.ingredients.count {
+//                print(i)
+//                let ingredient = recipe.ingredients[i].0
+//                let label = UILabel()
+//                label.text = ingredient
+//                self.ingredientStackView.addArrangedSubview(label)
+//                print(ingredient)
+//            }
+        }
+
+
+
     }
 
     func didCatchError(error: Error) {
         print(#function, error)
     }
 }
+
+
+
+//override func viewDidLoad() {
+//    super.viewDidLoad()
+//    var yPos = 90
+//    for i in 0..<dataArr.count {
+//        let element = dataArr[i]
+//        let labelNum = UILabel()
+//        let split = element.components(separatedBy: ",")
+//
+//        let num1 = split[0]
+//        let num2 = split[1]
+//
+//        let num1Nnum2 = "number 1 :" + num1 + " number 2:" + num2
+//        labelNum.text = num1Nnum2
+//        labelNum.textAlignment = .center
+//        labelNum.frame = CGRect( x:10, y:yPos, width:250, height: 80)
+//        yPos += 80
+//        self.view.addSubview(labelNum)
+//
+//    }

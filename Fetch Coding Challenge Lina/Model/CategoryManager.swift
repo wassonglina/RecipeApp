@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Metal
+
 
 struct CategoryManager {
 
@@ -14,7 +14,7 @@ struct CategoryManager {
         perform(urlString: url, transform: parseJSONCategory, completion: completion)
     }
 
-    func getRecipeData(url: String, completion: @escaping (Result<[RecipeModel], Error>) -> Void) {
+    func getRecipeData(url: String, completion: @escaping (Result<RecipeModel, Error>) -> Void) {
         perform(urlString: url, transform: parseJSONRecipe, completion: completion)
     }
 
@@ -54,7 +54,7 @@ struct CategoryManager {
         task.resume()
     }
 
-    //TODO:  for category
+    // encode data for category
     private func parseJSONCategory(_ encodedData: Data) throws -> [CategoryModel] {
         let decoder = JSONDecoder()
         do {
@@ -65,22 +65,21 @@ struct CategoryManager {
         }
     }
 
-    //TODO:  for details
-    private func parseJSONRecipe(_ encodedData: Data) throws -> [RecipeModel] {
+    //encode data for instructions
+    private func parseJSONRecipe(_ encodedData: Data) throws -> RecipeModel {
 
-        if let i = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String : [[String : String?]]] {
+        if let decodedData = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String : [[String : String?]]] {
 
-            print(i)
+            print(decodedData)
 
-            if let meals = i["meals"], let meal = meals.first, let title = meal["strMeal"] as? String {     //as? takes away both optionals
+            if let meals = decodedData["meals"], let meal = meals.first, let title = meal["strMeal"] as? String, let instruction = meal["strInstructions"] as? String {     //as? takes away both optionals
                 let ingredients = (1...20)
                     .compactMap { (meal["strIngredient\($0)"], meal["strMeasure\($0)"]) as? (String, String) }
                     .filter { $0 != ("", "") }       //check if always > no strIngredient & no strMeasure
-                print(ingredients)
-            }
 
+                return RecipeModel(name: title, instruction: instruction, ingredients: ingredients)
+            }
         }
-        return []
-        //        }
+        return RecipeModel(name: "blah", instruction: "blah", ingredients: [("blah", "blah")])  //TODO: change
     }
 }

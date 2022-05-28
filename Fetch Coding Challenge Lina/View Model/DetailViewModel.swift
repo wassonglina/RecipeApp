@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DetailViewModelDelegate: AnyObject {
-    func prepareDetailUI(with recipe: [RecipeModel])
+    func prepareDetailUI(with recipe: RecipeModel)
     func didCatchError(error: Error)
 }
 
@@ -36,7 +36,7 @@ class DetailViewModel {
     }
 
     //TODO: Repeat (in CategoryViewModel)
-    func evaluateResult(result: (Result<[RecipeModel], Error>)) {
+    func evaluateResult(result: (Result<RecipeModel, Error>)) {
         switch result {
         case .success(let recipeData):
             didFetchRecipe(recipeData)
@@ -45,13 +45,8 @@ class DetailViewModel {
         }
     }
 
-    func didFetchRecipe(_ recipe: [RecipeModel]) {
+    func didFetchRecipe(_ recipe: RecipeModel) {
         //do any additional preparation on category for UI in here, then pass to VC
-//        let sortedRecipe: [RecipeModel] = recipe.filter {
-//            $0 != ""
-//        }
-        print(#function)
-        print(delegate)
         self.delegate?.prepareDetailUI(with: recipe)
     }
 
