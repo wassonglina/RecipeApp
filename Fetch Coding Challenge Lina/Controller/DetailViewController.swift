@@ -16,8 +16,6 @@ class DetailViewController: UIViewController {
     let detailViewModel: DetailViewModel
 
     private let instructionLabel = UILabel()
-    private let ingredientLabel = UILabel()
-    private let measurementLabel = UILabel()
     private let titleLabel = UILabel()
     private let ingredientStackView = UIStackView()
 
@@ -102,8 +100,7 @@ class DetailViewController: UIViewController {
         stackView.addArrangedSubview(ingredientStackView)
         ingredientStackView.spacing = 25
         ingredientStackView.backgroundColor = .systemMint
-        ingredientStackView.addArrangedSubview(measurementLabel)
-        ingredientStackView.addArrangedSubview(ingredientLabel)
+        ingredientStackView.axis = .vertical
     }
 
     private func addInstructionTitleLabel() {
@@ -131,22 +128,14 @@ extension DetailViewController: DetailViewModelDelegate {
 
         DispatchQueue.main.async {
             self.titleLabel.text = recipe.name
-            self.ingredientLabel.text = recipe.ingredients[0].0
-            self.measurementLabel.text = recipe.ingredients[0].1
             self.instructionLabel.text = recipe.instruction
 
-//            for i in 0..<recipe.ingredients.count {
-//                print(i)
-//                let ingredient = recipe.ingredients[i].0
-//                let label = UILabel()
-//                label.text = ingredient
-//                self.ingredientStackView.addArrangedSubview(label)
-//                print(ingredient)
-//            }
+            recipe.ingredients.forEach { (ing, mea) in
+                let ingredientLabel = UILabel()
+                ingredientLabel.text = "\(mea) \(ing)"
+                self.ingredientStackView.addArrangedSubview(ingredientLabel)
+            }
         }
-
-
-
     }
 
     func didCatchError(error: Error) {
@@ -155,23 +144,3 @@ extension DetailViewController: DetailViewModelDelegate {
 }
 
 
-
-//override func viewDidLoad() {
-//    super.viewDidLoad()
-//    var yPos = 90
-//    for i in 0..<dataArr.count {
-//        let element = dataArr[i]
-//        let labelNum = UILabel()
-//        let split = element.components(separatedBy: ",")
-//
-//        let num1 = split[0]
-//        let num2 = split[1]
-//
-//        let num1Nnum2 = "number 1 :" + num1 + " number 2:" + num2
-//        labelNum.text = num1Nnum2
-//        labelNum.textAlignment = .center
-//        labelNum.frame = CGRect( x:10, y:yPos, width:250, height: 80)
-//        yPos += 80
-//        self.view.addSubview(labelNum)
-//
-//    }

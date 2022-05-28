@@ -7,6 +7,9 @@
 
 import Foundation
 
+enum CategoryError: Error {
+    case unexpectedFormat
+}
 
 struct CategoryManager {
 
@@ -80,6 +83,6 @@ struct CategoryManager {
                 return RecipeModel(name: title, instruction: instruction, ingredients: ingredients)
             }
         }
-        return RecipeModel(name: "blah", instruction: "blah", ingredients: [("blah", "blah")])  //TODO: change
+        throw CategoryError.unexpectedFormat
     }
 }
