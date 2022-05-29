@@ -29,6 +29,7 @@ class CategoryViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.identifier)
+        self.title = "Dessert"
         
         dataSource = UITableViewDiffableDataSource<Int, CategoryModel>(tableView: tableView) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell

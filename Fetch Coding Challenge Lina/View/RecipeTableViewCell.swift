@@ -22,7 +22,11 @@ class RecipeTableViewCell: UITableViewCell {
 
         contentView.addSubview(categoryRecipeLabel)
         categoryRecipeLabel.translatesAutoresizingMaskIntoConstraints = false
-        categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)  //TODO: make font adjustable to label length
+        categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)
+        categoryRecipeLabel.numberOfLines = 0
+
+        let verticalPadding = 15.0
+        let horizontalPadding = 40.0
 
         let heightConstraint = categoryImageView.heightAnchor.constraint(equalTo: categoryImageView.widthAnchor)
         heightConstraint.priority = .defaultHigh        //set to .defaultHigh priority otherweise conflicting constraints in cell
@@ -30,12 +34,13 @@ class RecipeTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             categoryImageView.widthAnchor.constraint(equalToConstant: 90),
             heightConstraint,
-            categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            categoryImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
-            categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: verticalPadding),
+            categoryImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -verticalPadding),
+            categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalPadding),
 
-            categoryRecipeLabel.leadingAnchor.constraint(equalTo: categoryImageView.trailingAnchor, constant: 15),
-            categoryRecipeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            categoryRecipeLabel.leadingAnchor.constraint(equalTo: categoryImageView.trailingAnchor, constant: 25),
+            categoryRecipeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            categoryRecipeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalPadding),
         ])
     }
 

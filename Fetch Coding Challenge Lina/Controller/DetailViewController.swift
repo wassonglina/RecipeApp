@@ -20,6 +20,10 @@ class DetailViewController: UIViewController {
     private let titleLabel = UILabel()
     private let ingredientStackView = UIStackView()
     private let imageView = UIImageView()
+    private let ingredientsLabel = UILabel()
+
+    private let customSpacing = 30.0
+    private let customSpacingLabel = 10.0
 
     init(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
@@ -34,8 +38,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         detailViewModel.delegate = self
-        detailViewModel.getRecipe()  //no idea about id
+        detailViewModel.getRecipe()  //has no idea about id
         view.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .black          //no need to make one?
 
         addScrollView()
         addStackView()
@@ -52,13 +57,15 @@ class DetailViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.spacing = 30
+        stackView.spacing = customSpacing
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+
+          //  stackView.setCustomSpacing(10.0, after: secondLabel,
         ])
     }
 
@@ -84,15 +91,17 @@ class DetailViewController: UIViewController {
     private func addImageView() {
         imageView.widthAnchor.constraint(equalToConstant: 270).isActive = true
         imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
+        imageView.contentMode = .scaleAspectFill  //TODO: necessary?
         stackView.addArrangedSubview(imageView)
+
      //   imageView.layer.cornerRadius = 5  //TODO: where to set?
     }
 
     private func addIngredientsTitleLabel() {
-        let ingredientsLabel = UILabel()
         ingredientsLabel.text = "Ingredients"
         ingredientsLabel.font = .boldSystemFont(ofSize: 19)
         stackView.addArrangedSubview(ingredientsLabel)
+        stackView.setCustomSpacing(customSpacingLabel, after: ingredientsLabel)
     }
 
     private func addIngredientStackView() {
@@ -100,6 +109,7 @@ class DetailViewController: UIViewController {
         ingredientStackView.spacing = 15
         ingredientStackView.backgroundColor = .systemMint
         ingredientStackView.axis = .vertical
+        stackView.setCustomSpacing(customSpacing, after: ingredientStackView)
     }
 
     private func addInstructionTitleLabel() {
@@ -107,6 +117,7 @@ class DetailViewController: UIViewController {
         instructionLabel.text = "Instructions"
         instructionLabel.font = .boldSystemFont(ofSize: 19)
         stackView.addArrangedSubview(instructionLabel)
+        stackView.setCustomSpacing(customSpacingLabel, after: instructionLabel)
     }
 
     private func addInstructionsLabel() {
@@ -117,20 +128,17 @@ class DetailViewController: UIViewController {
     }
 }
 
+//MARK: - Extension DetailViewModelDelegate
 
 extension DetailViewController: DetailViewModelDelegate {
-
 
     func prepareDetailUI(name: String, image: String, ingredients: [(String, String)], instruction: String) {
 
         DispatchQueue.main.async {
             self.titleLabel.text = name
-
             let url = URL(string: image)
             self.imageView.kf.setImage(with: url)
-
             self.instructionLabel.text = instruction
-
             ingredients.forEach { (ingredient, measurement) in
                 let ingredientLabel = UILabel()
 //                let attributedText = NSAttributedString(string: mea, attributes: [

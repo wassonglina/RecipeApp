@@ -75,7 +75,7 @@ struct CategoryManager {
             if let meals = decodedData["meals"], let meal = meals.first, let title = meal["strMeal"] as? String, let instruction = meal["strInstructions"] as? String, let image = meal["strMealThumb"] as? String {     //as? takes away both optionals
                 let ingredients = (1...20)
                     .compactMap { (meal["strIngredient\($0)"], meal["strMeasure\($0)"]) as? (String, String) }
-                    .filter { $0 != ("", "") }       //check if always > no strIngredient & no strMeasure
+                    .filter { $0 != ("", "") && $0 != ("", " ")}       //check if always > no strIngredient & no strMeasure
                 print(image)
 
                 return RecipeModel(name: title, instruction: instruction, image: image, ingredients: ingredients)
@@ -84,3 +84,5 @@ struct CategoryManager {
         throw CategoryError.unexpectedFormat
     }
 }
+
+
