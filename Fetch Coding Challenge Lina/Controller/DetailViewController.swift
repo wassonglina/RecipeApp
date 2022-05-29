@@ -22,8 +22,8 @@ class DetailViewController: UIViewController {
     private let imageView = UIImageView()
     private let ingredientsLabel = UILabel()
 
-    private let customSpacing = 30.0
-    private let customSpacingLabel = 10.0
+    private let customSpacing = 40.0
+    private let customSpacingLabel = 15.0
 
     init(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
@@ -39,8 +39,8 @@ class DetailViewController: UIViewController {
 
         detailViewModel.delegate = self
         detailViewModel.getRecipe()  //has no idea about id
-        view.backgroundColor = .white
-        navigationController?.navigationBar.tintColor = .black          //no need to make one?
+        view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.tintColor = .label         //no need to make one?
 
         addScrollView()
         addStackView()
@@ -105,7 +105,6 @@ class DetailViewController: UIViewController {
     private func addIngredientStackView() {
         stackView.addArrangedSubview(ingredientStackView)
         ingredientStackView.spacing = 15
-        ingredientStackView.backgroundColor = .systemMint
         ingredientStackView.axis = .vertical
         stackView.setCustomSpacing(customSpacing, after: ingredientStackView)
     }
@@ -121,7 +120,6 @@ class DetailViewController: UIViewController {
     private func addInstructionsLabel() {
         instructionLabel.numberOfLines = 0
         stackView.addArrangedSubview(instructionLabel)
-        instructionLabel.backgroundColor = .link
         instructionLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -70).isActive = true  //TODO: check for landscape
     }
 }
@@ -132,20 +130,20 @@ extension DetailViewController: DetailViewModelDelegate {
 
     func prepareDetailUI(name: String, image: String, ingredients: [(String, String)], instruction: String) {
 
-        DispatchQueue.main.async {
-            self.titleLabel.text = name
-            let url = URL(string: image)
-            self.imageView.kf.setImage(with: url)
-            self.instructionLabel.text = instruction
-            ingredients.forEach { (ingredient, measurement) in
-                let ingredientLabel = UILabel()
-//                let attributedText = NSAttributedString(string: mea, attributes: [
-//                    NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)
-//                ])
-//                ingredientLabel.attributedText = attributedText
-                ingredientLabel.text = "\(measurement) \(ingredient)"
-                self.ingredientStackView.addArrangedSubview(ingredientLabel)
-            }
+        titleLabel.text = name
+        let url = URL(string: image)
+        imageView.kf.setImage(with: url)
+        instructionLabel.text = instruction
+        ingredients.forEach { (ingredient, measurement) in
+            let ingredientLabel = UILabel()
+            //                let attributedText = NSAttributedString(string: mea, attributes: [
+            //                    NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)
+            //                ])
+            //                ingredientLabel.attributedText = attributedText
+            ingredientLabel.text = "\(measurement) \(ingredient)"
+            self.ingredientStackView.addArrangedSubview(ingredientLabel)
+
+            //update here to hide potential loading state e.g. with enum
         }
     }
 

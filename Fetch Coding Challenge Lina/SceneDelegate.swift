@@ -22,11 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
    //     let viewController = DetailViewController()
         let navigation = UINavigationController(rootViewController: viewController)
 
+        navigation.navigationBar.prefersLargeTitles = true
+
         window.rootViewController = navigation
         self.window = window
         window.makeKeyAndVisible()
-
-
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -19,7 +19,7 @@ class DetailViewModel {
 
     private let id: String
 
-//TODO: instanciate new CategoryManager()? with let
+    //TODO: instanciate new CategoryManager()? with let
     let categoryManager = CategoryManager()
 
     weak var delegate: DetailViewModelDelegate?
@@ -62,7 +62,9 @@ class DetailViewModel {
 
         print(instruction)
 
-        self.delegate?.prepareDetailUI(name: name, image: recipe.image, ingredients: recipe.ingredients, instruction: instruction)
+        DispatchQueue.main.async {
+            self.delegate?.prepareDetailUI(name: name, image: recipe.image, ingredients: recipe.ingredients, instruction: instruction)
+        }
     }
 
     func didCatchError(error: Error) {
