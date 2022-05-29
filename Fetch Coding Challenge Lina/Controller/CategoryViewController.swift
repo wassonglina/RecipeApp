@@ -11,7 +11,7 @@ import UIKit
 
 class CategoryViewController: UIViewController {
 
-    private var dataSource: UITableViewDiffableDataSource<Int, CategoryModel>!
+    private var dataSource: UITableViewDiffableDataSource<Int, CategoryItemModel>!
 
     let categoryViewModel = CategoryViewModel()   //TODO: outside of viewDidLoad?
 
@@ -31,9 +31,10 @@ class CategoryViewController: UIViewController {
         tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.identifier)
         self.title = "Dessert"
         
-        dataSource = UITableViewDiffableDataSource<Int, CategoryModel>(tableView: tableView) { tableView, indexPath, item in
+        dataSource = UITableViewDiffableDataSource<Int, CategoryItemModel>(tableView: tableView) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
-            cell.setTitle(with: item.name)
+            //if it's getting more complex make view model for cell to pass on information
+            cell.setTitle(with: item.name.capitalized)
             cell.setImage(with: item.image)
 
             return cell
@@ -66,8 +67,8 @@ extension CategoryViewController: UITableViewDelegate {
 
 extension CategoryViewController: CategoryViewModelDelegate {
 
-    func prepareCategoryUI(with category: [CategoryModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, CategoryModel>()
+    func prepareCategoryUI(with category: [CategoryItemModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, CategoryItemModel>()
         snapshot.appendSections([0])
         snapshot.appendItems(category)
         dataSource.apply(snapshot)

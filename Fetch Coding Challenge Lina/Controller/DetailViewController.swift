@@ -64,8 +64,6 @@ class DetailViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-
-          //  stackView.setCustomSpacing(10.0, after: secondLabel,
         ])
     }
 
@@ -91,10 +89,10 @@ class DetailViewController: UIViewController {
     private func addImageView() {
         imageView.widthAnchor.constraint(equalToConstant: 270).isActive = true
         imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
-        imageView.contentMode = .scaleAspectFill  //TODO: necessary?
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 8
+        imageView.layer.masksToBounds = true
         stackView.addArrangedSubview(imageView)
-
-     //   imageView.layer.cornerRadius = 5  //TODO: where to set?
     }
 
     private func addIngredientsTitleLabel() {

@@ -8,7 +8,8 @@
 import Foundation
 
 protocol CategoryViewModelDelegate: AnyObject {
-    func prepareCategoryUI(with category: [CategoryModel])
+    func prepareCategoryUI(with category: [CategoryItemModel])
+ //   func prepareCategoryUI(category: [(name: String, id: String, url: String)])  //TODO: instead?
     func didCatchError(error: Error)
 }
 
@@ -25,7 +26,7 @@ class CategoryViewModel {
         }
     }
 
-    func evaluateResult(result: (Result<[CategoryModel], Error>)) {
+    func evaluateResult(result: (Result<[CategoryItemModel], Error>)) {
         switch result {
         case .success(let categoryData):
             didFetchCategory(categoryData)
@@ -35,9 +36,10 @@ class CategoryViewModel {
     }
 
     //TODO: prepare data for UI without Category Model !!
-    func didFetchCategory(_ category: [CategoryModel]) {
+    func didFetchCategory(_ category: [CategoryItemModel]) {
         //do any additional preparation on category for UI in here, then pass to VC
-        let sortedCategory: [CategoryModel] = category.sorted { $0.name < $1.name }
+        let sortedCategory = category
+            .sorted { $0.name < $1.name }
         self.delegate?.prepareCategoryUI(with: sortedCategory)
     }
 

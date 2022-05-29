@@ -19,6 +19,9 @@ class RecipeTableViewCell: UITableViewCell {
 
         contentView.addSubview(categoryImageView)
         categoryImageView.translatesAutoresizingMaskIntoConstraints = false
+        categoryImageView.contentMode = .scaleAspectFill
+        categoryImageView.layer.cornerRadius = 8
+        categoryImageView.layer.masksToBounds = true
 
         contentView.addSubview(categoryRecipeLabel)
         categoryRecipeLabel.translatesAutoresizingMaskIntoConstraints = false

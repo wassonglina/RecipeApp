@@ -13,7 +13,7 @@ enum CategoryError: Error {
 
 struct CategoryManager {
 
-    func getCategoryData(url: String, completion: @escaping (Result<[CategoryModel], Error>) -> Void) {
+    func getCategoryData(url: String, completion: @escaping (Result<[CategoryItemModel], Error>) -> Void) {
         perform(urlString: url, transform: parseJSONCategory, completion: completion)
     }
 
@@ -58,12 +58,12 @@ struct CategoryManager {
     }
 
     // encode data for category
-    private func parseJSONCategory(_ encodedData: Data) throws -> [CategoryModel] {
+    private func parseJSONCategory(_ encodedData: Data) throws -> [CategoryItemModel] {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(CategoryPayload.self, from: encodedData)
-            let categoryModel: [CategoryModel] = decodedData.meals
-                .compactMap { CategoryModel(name: $0.strMeal, image: $0.strMealThumb, id: $0.idMeal) }
+            let categoryModel: [CategoryItemModel] = decodedData.meals
+                .compactMap { CategoryItemModel(name: $0.strMeal, image: $0.strMealThumb, id: $0.idMeal) }
             return categoryModel
         }
     }
@@ -76,8 +76,6 @@ struct CategoryManager {
                 let ingredients = (1...20)
                     .compactMap { (meal["strIngredient\($0)"], meal["strMeasure\($0)"]) as? (String, String) }
                     .filter { $0 != ("", "") && $0 != ("", " ")}       //check if always > no strIngredient & no strMeasure
-                print(image)
-
                 return RecipeModel(name: title, instruction: instruction, image: image, ingredients: ingredients)
             }
         }

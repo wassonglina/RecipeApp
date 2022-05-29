@@ -47,28 +47,22 @@ class DetailViewModel {
 
     func didFetchRecipe(_ recipe: RecipeModel) {
         //do any additional preparation on category for UI in here, then pass to VC
+
+        let name = recipe.name.capitalized
+
+        //strange line seperator some recipes use: U+2028
+        let lineSeperator = " "
+
         //TODO: doesn't work
         let instruction = recipe.instruction
-            .replacingOccurrences(of: "\r\n", with: "\n\n")
-            .replacingOccurrences(of: "\r\n\r\n", with: "\n\n")
             .replacingOccurrences(of: "\r\n\r\n\r\n", with: "\n\n")
-
-        //TODO: doesn't work either
-//        let replacements = [
-//            ("\r\n", "\n\n"),
-//            ("\r\n\r\n", "\n\n"),
-//            ("\r\n\r\n\r\n", "\n\n")
-//        ]
-//
-//        var instruction2 = recipe.instruction
-//
-//        for (searchString, replacement) in replacements {
-//            instruction2 = instruction2.replacingOccurrences(of: searchString, with: replacement)
-//        }
+            .replacingOccurrences(of: "\r\n\r\n", with: "\n\n")
+            .replacingOccurrences(of: "\r\n", with: "\n\n")
+            .replacingOccurrences(of: lineSeperator, with: "")
 
         print(instruction)
 
-        self.delegate?.prepareDetailUI(name: recipe.name, image: recipe.image, ingredients: recipe.ingredients, instruction: instruction)
+        self.delegate?.prepareDetailUI(name: name, image: recipe.image, ingredients: recipe.ingredients, instruction: instruction)
     }
 
     func didCatchError(error: Error) {
