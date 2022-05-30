@@ -13,9 +13,7 @@
 		FCA450CB283D56F800F5DD76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA450C9283D56F800F5DD76 /* Main.storyboard */; };
 		FCA450CD283D56FD00F5DD76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA450CC283D56FD00F5DD76 /* Assets.xcassets */; };
 		FCA450D0283D56FD00F5DD76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA450CE283D56FD00F5DD76 /* LaunchScreen.storyboard */; };
-		FCA450DB283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450DA283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift */; };
-		FCA450E5283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */; };
-		FCA450E7283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */; };
+		FCA450DB283D56FE00F5DD76 /* RecipeDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450DA283D56FE00F5DD76 /* RecipeDecodingTests.swift */; };
 		FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */; };
 		FCA450F8283D692E00F5DD76 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */; };
 		FCA450FC283E930600F5DD76 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FB283E930600F5DD76 /* CategoryManager.swift */; };
@@ -24,6 +22,9 @@
 		FCA45105283FE05900F5DD76 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45104283FE05900F5DD76 /* CategoryViewModel.swift */; };
 		FCA45108284012B700F5DD76 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45107284012B700F5DD76 /* DetailViewModel.swift */; };
 		FCA4510E28407D1C00F5DD76 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4510D28407D1C00F5DD76 /* DetailViewController.swift */; };
+		FCD03A9A2845747100A740F0 /* Fetch_Coding_Challenge_LinaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */; };
+		FCD03A9B284574D100A740F0 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */; };
+		FCD03A9D2845750D00A740F0 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD03A9C2845750D00A740F0 /* DetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,7 @@
 		FCA450CF283D56FD00F5DD76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCA450D1283D56FD00F5DD76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCA450D6283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fetch Coding Challenge LinaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCA450DA283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaTests.swift; sourceTree = "<group>"; };
+		FCA450DA283D56FE00F5DD76 /* RecipeDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDecodingTests.swift; sourceTree = "<group>"; };
 		FCA450E0283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fetch Coding Challenge LinaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaUITests.swift; sourceTree = "<group>"; };
 		FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		FCA45104283FE05900F5DD76 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		FCA45107284012B700F5DD76 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		FCA4510D28407D1C00F5DD76 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FCD03A9C2845750D00A740F0 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +134,8 @@
 		FCA450D9283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests */ = {
 			isa = PBXGroup;
 			children = (
-				FCA450DA283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift */,
+				FCA450DA283D56FE00F5DD76 /* RecipeDecodingTests.swift */,
+				FCD03A9C2845750D00A740F0 /* DetailViewModelTests.swift */,
 			);
 			path = "Fetch Coding Challenge LinaTests";
 			sourceTree = "<group>";
@@ -140,8 +143,8 @@
 		FCA450E3283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests */ = {
 			isa = PBXGroup;
 			children = (
-				FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */,
 				FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */,
+				FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */,
 			);
 			path = "Fetch Coding Challenge LinaUITests";
 			sourceTree = "<group>";
@@ -336,7 +339,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA450DB283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaTests.swift in Sources */,
+				FCD03A9A2845747100A740F0 /* Fetch_Coding_Challenge_LinaUITests.swift in Sources */,
+				FCA450DB283D56FE00F5DD76 /* RecipeDecodingTests.swift in Sources */,
+				FCD03A9B284574D100A740F0 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift in Sources */,
+				FCD03A9D2845750D00A740F0 /* DetailViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,8 +350,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA450E5283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift in Sources */,
-				FCA450E7283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

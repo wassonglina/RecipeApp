@@ -63,7 +63,7 @@ struct CategoryManager {
         do {
             let decodedData = try decoder.decode(CategoryPayload.self, from: encodedData)
             let categoryModel: [CategoryItemModel] = decodedData.meals
-                .compactMap { CategoryItemModel(name: $0.strMeal, image: $0.strMealThumb, id: $0.idMeal) }
+                .map { CategoryItemModel(name: $0.strMeal, image: $0.strMealThumb, id: $0.idMeal) }
             return categoryModel
         }
     }
@@ -71,23 +71,29 @@ struct CategoryManager {
     //encode data for instructions
     static func parseJSONRecipe(_ encodedData: Data) throws -> RecipeModel {
 
-        if let decodedData = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String : [[String : String?]]] {
-            if let meals = decodedData["meals"], let meal = meals.first, let title = meal["strMeal"] as? String, let instruction = meal["strInstructions"] as? String, let image = meal["strMealThumb"] as? String {     //as? takes away both optionals
-                let ingredients = (1...20)
-                    .compactMap { i -> IngredientInfo? in
-                        guard let ingredient = meal["strIngredient\(i)"] as? String,
-                           let measurement = meal["strMeasure\(i)"] as? String,
-                           !ingredient.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-                              !measurement.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                        else {
-                            return nil
-                        }
-                        return IngredientInfo(ingredient: ingredient, measurement: measurement)
-                    }
+        if let decodedData = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String : [[String : String?]]],
+           let meals = decodedData["meals"],
+           let meal = meals.first,
+           let title = meal["strMeal"] as? String,
+           let instruction = meal["strInstructions"] as? String,
+           let image = meal["strMealThumb"] as? String {
 
-                return RecipeModel(name: title, instruction: instruction, image: image, ingredients: ingredients)
+            var i = 1
+            var ings = [IngredientInfo]()
+
+            while meal.index(forKey: "strIngredient\(i)") != nil  {
+                if let ingredient = meal["strIngredient\(i)"] as? String,
+                   let measurement = meal["strMeasure\(i)"] as? String,
+                   !ingredient.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                   !measurement.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    ings.append(IngredientInfo(ingredient: ingredient, measurement: measurement))
+                }
+                i += 1
+                print(i)
             }
+            return RecipeModel(name: title, instruction: instruction, image: image, ingredients: ings)
         }
+
         throw CategoryError.unexpectedFormat
     }
 }

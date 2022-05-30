@@ -28,22 +28,21 @@ class RecipeTableViewCell: UITableViewCell {
         categoryRecipeLabel.font = .boldSystemFont(ofSize: 20)
         categoryRecipeLabel.numberOfLines = 0
 
-        let verticalPadding = 15.0
-        let horizontalPadding = 40.0
+        let padding = 15.0
 
         let heightConstraint = categoryImageView.heightAnchor.constraint(equalTo: categoryImageView.widthAnchor)
-        heightConstraint.priority = .defaultHigh        //set to .defaultHigh priority otherweise conflicting constraints in cell
+        heightConstraint.priority = .defaultHigh        //set to .defaultHigh priority otherwise conflicting constraints in cell
 
         NSLayoutConstraint.activate([
             categoryImageView.widthAnchor.constraint(equalToConstant: 90),
             heightConstraint,
-            categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: verticalPadding),
-            categoryImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -verticalPadding),
-            categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalPadding),
+            categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+            categoryImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
+            categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
 
             categoryRecipeLabel.leadingAnchor.constraint(equalTo: categoryImageView.trailingAnchor, constant: 25),
             categoryRecipeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            categoryRecipeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalPadding),
+            categoryRecipeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
         ])
     }
 

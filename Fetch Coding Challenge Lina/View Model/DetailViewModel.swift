@@ -43,25 +43,24 @@ class DetailViewModel {
 
     func didFetchRecipe(_ recipe: RecipeModel) {
         //do any additional preparation on category for UI in here, then pass to VC
-
-        print(recipe)
-
         let name = recipe.name.capitalized
 
-        //strange line seperator some recipes use: U+2028
-        let lineSeperator = " "
-
-        let instruction = recipe.instruction
-            .replacingOccurrences(of: "\r\n\r\n\r\n", with: "\n\n")
-            .replacingOccurrences(of: "\r\n\r\n", with: "\n\n")
-            .replacingOccurrences(of: "\r\n", with: "\n\n")
-            .replacingOccurrences(of: lineSeperator, with: "")
-
-        print(instruction)
+        let instruction = Self.sanitizeInstruction(with: recipe.instruction)
 
         DispatchQueue.main.async {
             self.delegate?.prepareDetailUI(name: name, image: recipe.image, ingredients: recipe.ingredients, instruction: instruction)
         }
+    }
+
+    static func sanitizeInstruction(with instruction: String) -> String {
+
+        //strange line seperator some recipes use: U+2028
+        let lineSeperator = " "
+        return instruction
+            .replacingOccurrences(of: "\r\n\r\n\r\n", with: "\n\n")
+            .replacingOccurrences(of: "\r\n\r\n", with: "\n\n")
+            .replacingOccurrences(of: "\r\n", with: "\n\n")
+            .replacingOccurrences(of: lineSeperator, with: "")
     }
 
     func didCatchError(error: Error) {
