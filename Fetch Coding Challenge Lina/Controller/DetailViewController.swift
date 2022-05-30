@@ -128,19 +128,19 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: DetailViewModelDelegate {
 
-    func prepareDetailUI(name: String, image: String, ingredients: [(String, String)], instruction: String) {
+    func prepareDetailUI(name: String, image: String, ingredients: [IngredientInfo], instruction: String) {
 
         titleLabel.text = name
         let url = URL(string: image)
         imageView.kf.setImage(with: url)
         instructionLabel.text = instruction
-        ingredients.forEach { (ingredient, measurement) in
+        ingredients.forEach {
             let ingredientLabel = UILabel()
             //                let attributedText = NSAttributedString(string: mea, attributes: [
             //                    NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)
             //                ])
             //                ingredientLabel.attributedText = attributedText
-            ingredientLabel.text = "\(measurement) \(ingredient)"
+            ingredientLabel.text = "\($0.measurement) \($0.ingredient)"
             self.ingredientStackView.addArrangedSubview(ingredientLabel)
 
             //update here to hide potential loading state e.g. with enum

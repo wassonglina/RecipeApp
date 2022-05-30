@@ -14,9 +14,16 @@ struct CategoryItemModel: Hashable {
 }
 
 
-struct RecipeModel {
+struct RecipeModel: Equatable {
+
     let name: String
     let instruction: String
     let image: String
-    let ingredients: [(String, String)]
+    let ingredients: [IngredientInfo]
+}
+
+//tuples are not equatable so this is one solution istead of manually equating  tuple's content
+struct IngredientInfo: Equatable {
+    let ingredient: String
+    let measurement: String
 }

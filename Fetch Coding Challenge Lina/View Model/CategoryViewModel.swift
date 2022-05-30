@@ -17,11 +17,10 @@ class CategoryViewModel {
 
     private let categoryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
     weak var delegate: CategoryViewModelDelegate?
-    var categoryManager = CategoryManager()
 
     //TODO: where to call self > [self] or self.evaluateResult
     func getCategoryData() {
-        categoryManager.getCategoryData(url: categoryURL) { [self] category in
+        CategoryManager.getCategoryData(url: categoryURL) { [self] category in
             evaluateResult(result: category)
         }
     }

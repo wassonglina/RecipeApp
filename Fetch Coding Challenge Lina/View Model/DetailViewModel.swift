@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DetailViewModelDelegate: AnyObject {
-    func prepareDetailUI(name: String, image: String, ingredients: [(String, String)], instruction: String)
+    func prepareDetailUI(name: String, image: String, ingredients: [IngredientInfo], instruction: String)
     func didCatchError(error: Error)
 }
 
@@ -18,10 +18,6 @@ class DetailViewModel {
     private let InstructionUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
 
     private let id: String
-
-    //TODO: instanciate new CategoryManager()? with let
-    let categoryManager = CategoryManager()
-
     weak var delegate: DetailViewModelDelegate?
 
     init(id: String) {
@@ -30,7 +26,7 @@ class DetailViewModel {
 
     func getRecipe() {
         let instructionURL = "\(InstructionUrl)\(id)"
-        categoryManager.getRecipeData(url: instructionURL) { [self] recipe in
+        CategoryManager.getRecipeData(url: instructionURL) { [self] recipe in
             evaluateResult(result: recipe)
         }
     }
@@ -47,6 +43,8 @@ class DetailViewModel {
 
     func didFetchRecipe(_ recipe: RecipeModel) {
         //do any additional preparation on category for UI in here, then pass to VC
+
+        print(recipe)
 
         let name = recipe.name.capitalized
 

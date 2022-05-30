@@ -13,18 +13,18 @@ enum CategoryError: Error {
 
 struct CategoryManager {
 
-    func getCategoryData(url: String, completion: @escaping (Result<[CategoryItemModel], Error>) -> Void) {
+    static func getCategoryData(url: String, completion: @escaping (Result<[CategoryItemModel], Error>) -> Void) {
         perform(urlString: url, transform: parseJSONCategory, completion: completion)
     }
 
-    func getRecipeData(url: String, completion: @escaping (Result<RecipeModel, Error>) -> Void) {
+    static func getRecipeData(url: String, completion: @escaping (Result<RecipeModel, Error>) -> Void) {
         perform(urlString: url, transform: parseJSONRecipe, completion: completion)
     }
 
 
-    private func perform<T>(urlString: String,
-                            transform: @escaping (Data) throws -> T,
-                            completion: @escaping (Result<T, Error>) -> Void
+    private static func perform<T>(urlString: String,
+                                   transform: @escaping (Data) throws -> T,
+                                   completion: @escaping (Result<T, Error>) -> Void
     ) {
         performNetworkRequest(with: urlString) { result in
 
@@ -43,7 +43,7 @@ struct CategoryManager {
         }
     }
 
-    private func performNetworkRequest(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    private static func performNetworkRequest(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
         //return failure or throw in future version
         guard let url = URL(string: urlString) else { return }
         let task = URLSession.shared
@@ -58,7 +58,7 @@ struct CategoryManager {
     }
 
     // encode data for category
-    private func parseJSONCategory(_ encodedData: Data) throws -> [CategoryItemModel] {
+    static func parseJSONCategory(_ encodedData: Data) throws -> [CategoryItemModel] {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(CategoryPayload.self, from: encodedData)
@@ -69,13 +69,22 @@ struct CategoryManager {
     }
 
     //encode data for instructions
-    private func parseJSONRecipe(_ encodedData: Data) throws -> RecipeModel {
+    static func parseJSONRecipe(_ encodedData: Data) throws -> RecipeModel {
 
         if let decodedData = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String : [[String : String?]]] {
             if let meals = decodedData["meals"], let meal = meals.first, let title = meal["strMeal"] as? String, let instruction = meal["strInstructions"] as? String, let image = meal["strMealThumb"] as? String {     //as? takes away both optionals
                 let ingredients = (1...20)
-                    .compactMap { (meal["strIngredient\($0)"], meal["strMeasure\($0)"]) as? (String, String) }
-                    .filter { $0 != ("", "") && $0 != ("", " ")}       //check if always > no strIngredient & no strMeasure
+                    .compactMap { i -> IngredientInfo? in
+                        guard let ingredient = meal["strIngredient\(i)"] as? String,
+                           let measurement = meal["strMeasure\(i)"] as? String,
+                           !ingredient.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                              !measurement.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                        else {
+                            return nil
+                        }
+                        return IngredientInfo(ingredient: ingredient, measurement: measurement)
+                    }
+
                 return RecipeModel(name: title, instruction: instruction, image: image, ingredients: ingredients)
             }
         }
