@@ -53,7 +53,6 @@ class DetailViewModel {
         //strange line seperator some recipes use: U+2028
         let lineSeperator = " "
 
-        //TODO: doesn't work
         let instruction = recipe.instruction
             .replacingOccurrences(of: "\r\n\r\n\r\n", with: "\n\n")
             .replacingOccurrences(of: "\r\n\r\n", with: "\n\n")
@@ -73,6 +72,4 @@ class DetailViewModel {
     }
 }
 
-
-// \r\n\r\n
 

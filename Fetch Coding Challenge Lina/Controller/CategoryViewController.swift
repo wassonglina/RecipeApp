@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 
 class CategoryViewController: UIViewController {
@@ -25,8 +26,10 @@ class CategoryViewController: UIViewController {
         //TODO: leave here?
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+
         tableView.dataSource = dataSource
         tableView.delegate = self
+        tableView.prefetchDataSource = self
         tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.identifier)
         self.title = "Dessert"
 
@@ -84,3 +87,16 @@ extension CategoryViewController: CategoryViewModelDelegate {
         print("Error")
     }
 }
+
+//MARK: - Extension UITableViewDataSourcePrefetching
+
+extension CategoryViewController: UITableViewDataSourcePrefetching {
+
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        let urls = indexPaths
+            .compactMap { dataSource.itemIdentifier(for: $0)?.image }
+            .compactMap { URL(string: $0) }
+        ImagePrefetcher(urls: urls).start()
+    }
+}
+
