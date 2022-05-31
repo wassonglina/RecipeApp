@@ -30,22 +30,20 @@ struct NetworkManager {
         performNetworkRequest(with: urlString) { result in
 
             switch result {
-            case .success(let data):        // Network request successful
+            case .success(let data):
                 do {
-                    let entity = try transform(data)  //transform calls parseJSON
-                    completion(.success(entity))      //if parsing success > data passed on
+                    let entity = try transform(data)
+                    completion(.success(entity))
                 } catch {
-                    completion(.failure(error))     //if parsing failure > throws error
-                    print("Error parsing JSON: \(error)")
+                    completion(.failure(error))
                 }
-            case .failure(let error):       //Network request not succesful
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
 
     private static func performNetworkRequest(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        //return failure or throw in future version
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidURL))
             return
@@ -61,7 +59,6 @@ struct NetworkManager {
         task.resume()
     }
 
-    // encode data for category
     static func parseJSONCategory(_ encodedData: Data) throws -> [CategoryItemModel] {
         let decoder = JSONDecoder()
         do {
@@ -72,7 +69,6 @@ struct NetworkManager {
         }
     }
 
-    //encode data for instructions
     static func parseJSONRecipe(_ encodedData: Data) throws -> RecipeModel {
 
         if let decodedData = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String : [[String : String?]]],

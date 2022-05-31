@@ -13,8 +13,7 @@ import Kingfisher
 class CategoryViewController: UIViewController {
 
     private var dataSource: UITableViewDiffableDataSource<Int, CategoryItemModel>!
-
-    let categoryViewModel = CategoryViewModel()   //TODO: outside of viewDidLoad?
+    private let categoryViewModel = CategoryViewModel()
     private let tableView = UITableView()
 
     override func viewDidLoad() {
@@ -22,10 +21,6 @@ class CategoryViewController: UIViewController {
 
         categoryViewModel.delegate = self
         categoryViewModel.getCategoryData()
-
-        //TODO: leave here?
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
 
         tableView.dataSource = dataSource
         tableView.delegate = self
@@ -42,6 +37,8 @@ class CategoryViewController: UIViewController {
             return cell
         }
 
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -52,26 +49,22 @@ class CategoryViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let selectedIndexPath =  tableView.indexPathForSelectedRow {
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
     }
 }
-
-//MARK: - Extension UITableViewDelegate
 
 extension CategoryViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedItem = dataSource.itemIdentifier(for: indexPath) {
             let detailViewModel = DetailViewModel(id: selectedItem.id)
-            let detailViewController = DetailViewController(detailViewModel: detailViewModel)  //look up
+            let detailViewController = DetailViewController(detailViewModel: detailViewModel)
             self.navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
 }
-
-//MARK: - Extension ViewModelDelegate
 
 extension CategoryViewController: CategoryViewModelDelegate {
 
@@ -87,8 +80,6 @@ extension CategoryViewController: CategoryViewModelDelegate {
         print("Error")
     }
 }
-
-//MARK: - Extension UITableViewDataSourcePrefetching
 
 extension CategoryViewController: UITableViewDataSourcePrefetching {
 

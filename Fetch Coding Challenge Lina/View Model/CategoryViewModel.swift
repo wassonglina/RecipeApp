@@ -9,7 +9,6 @@ import Foundation
 
 protocol CategoryViewModelDelegate: AnyObject {
     func prepareCategoryUI(with category: [CategoryItemModel])
-    //   func prepareCategoryUI(category: [(name: String, id: String, url: String)])  //TODO: instead?
     func didCatchError(error: Error)
 }
 
@@ -18,10 +17,9 @@ class CategoryViewModel {
     private let categoryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
     weak var delegate: CategoryViewModelDelegate?
 
-    //TODO: where to call self > [self] or self.evaluateResult
     func getCategoryData() {
-        NetworkManager.getCategoryData(url: categoryURL) { [self] category in
-            evaluateResult(result: category)
+        NetworkManager.getCategoryData(url: categoryURL) {
+            self.evaluateResult(result: $0)
         }
     }
 
@@ -34,9 +32,7 @@ class CategoryViewModel {
         }
     }
 
-    //TODO: prepare data for UI without Category Model !!
     func didFetchCategory(_ category: [CategoryItemModel]) {
-        //do any additional preparation on category for UI in here, then pass to VC
         let sortedCategory = category
             .sorted { $0.name < $1.name }
 

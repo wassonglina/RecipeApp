@@ -14,8 +14,7 @@ class DetailViewController: UIViewController {
 
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
-    let detailViewModel: DetailViewModel
-
+    private let detailViewModel: DetailViewModel
     private let instructionLabel = UILabel()
     private let titleLabel = UILabel()
     private let ingredientStackView = UIStackView()
@@ -27,7 +26,7 @@ class DetailViewController: UIViewController {
 
     init(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
-        super.init(nibName: nil, bundle: nil)       //look up
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -38,9 +37,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         detailViewModel.delegate = self
-        detailViewModel.getRecipe()  //has no idea about id
+        detailViewModel.getRecipe()
         view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.tintColor = .label         //no need to make one?
+        navigationController?.navigationBar.tintColor = .label
 
         addScrollView()
         addStackView()
@@ -120,16 +119,13 @@ class DetailViewController: UIViewController {
     private func addInstructionsLabel() {
         instructionLabel.numberOfLines = 0
         stackView.addArrangedSubview(instructionLabel)
-        instructionLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -70).isActive = true  //TODO: check for landscape
+        instructionLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, constant: -70).isActive = true
     }
 }
-
-//MARK: - Extension DetailViewModelDelegate
 
 extension DetailViewController: DetailViewModelDelegate {
 
     func prepareDetailUI(name: String, image: String, ingredients: [IngredientInfo], instruction: String) {
-
         titleLabel.text = name
         let url = URL(string: image)
         imageView.kf.setImage(with: url)
@@ -147,5 +143,3 @@ extension DetailViewController: DetailViewModelDelegate {
         print(#function, error)
     }
 }
-
-

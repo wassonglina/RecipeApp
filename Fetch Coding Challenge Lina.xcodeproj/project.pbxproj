@@ -16,8 +16,8 @@
 		FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */; };
 		FCA450F8283D692E00F5DD76 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */; };
 		FCA450FC283E930600F5DD76 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FB283E930600F5DD76 /* NetworkManager.swift */; };
-		FCA450FE283E9DE700F5DD76 /* NetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FD283E9DE700F5DD76 /* NetworkData.swift */; };
-		FCA45103283EA32C00F5DD76 /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45102283EA32C00F5DD76 /* NetworkModels.swift */; };
+		FCA450FE283E9DE700F5DD76 /* CategoryPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450FD283E9DE700F5DD76 /* CategoryPayload.swift */; };
+		FCA45103283EA32C00F5DD76 /* CategoryItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45102283EA32C00F5DD76 /* CategoryItemModel.swift */; };
 		FCA45105283FE05900F5DD76 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45104283FE05900F5DD76 /* CategoryViewModel.swift */; };
 		FCA45108284012B700F5DD76 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA45107284012B700F5DD76 /* DetailViewModel.swift */; };
 		FCA4510E28407D1C00F5DD76 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4510D28407D1C00F5DD76 /* DetailViewController.swift */; };
@@ -25,6 +25,7 @@
 		FCD03A9B284574D100A740F0 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */; };
 		FCD03A9D2845750D00A740F0 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD03A9C2845750D00A740F0 /* DetailViewModelTests.swift */; };
 		FCD03A9F2845802100A740F0 /* CategoryDecodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD03A9E2845802100A740F0 /* CategoryDecodingTest.swift */; };
+		FCD03AA12845C88200A740F0 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD03AA02845C88200A740F0 /* RecipeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,13 +60,14 @@
 		FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FCA450F7283D692E00F5DD76 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		FCA450FB283E930600F5DD76 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		FCA450FD283E9DE700F5DD76 /* NetworkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkData.swift; sourceTree = "<group>"; };
-		FCA45102283EA32C00F5DD76 /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
+		FCA450FD283E9DE700F5DD76 /* CategoryPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPayload.swift; sourceTree = "<group>"; };
+		FCA45102283EA32C00F5DD76 /* CategoryItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemModel.swift; sourceTree = "<group>"; };
 		FCA45104283FE05900F5DD76 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		FCA45107284012B700F5DD76 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		FCA4510D28407D1C00F5DD76 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FCD03A9C2845750D00A740F0 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		FCD03A9E2845802100A740F0 /* CategoryDecodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDecodingTest.swift; sourceTree = "<group>"; };
+		FCD03AA02845C88200A740F0 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,8 +155,9 @@
 			isa = PBXGroup;
 			children = (
 				FCA450FB283E930600F5DD76 /* NetworkManager.swift */,
-				FCA450FD283E9DE700F5DD76 /* NetworkData.swift */,
-				FCA45102283EA32C00F5DD76 /* NetworkModels.swift */,
+				FCA450FD283E9DE700F5DD76 /* CategoryPayload.swift */,
+				FCA45102283EA32C00F5DD76 /* CategoryItemModel.swift */,
+				FCD03AA02845C88200A740F0 /* RecipeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,12 +325,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA4510E28407D1C00F5DD76 /* DetailViewController.swift in Sources */,
+				FCD03AA12845C88200A740F0 /* RecipeModel.swift in Sources */,
 				FCA450F4283D57F600F5DD76 /* CategoryViewController.swift in Sources */,
 				FCA450F8283D692E00F5DD76 /* RecipeTableViewCell.swift in Sources */,
-				FCA450FE283E9DE700F5DD76 /* NetworkData.swift in Sources */,
+				FCA450FE283E9DE700F5DD76 /* CategoryPayload.swift in Sources */,
 				FCA45108284012B700F5DD76 /* DetailViewModel.swift in Sources */,
 				FCA450FC283E930600F5DD76 /* NetworkManager.swift in Sources */,
-				FCA45103283EA32C00F5DD76 /* NetworkModels.swift in Sources */,
+				FCA45103283EA32C00F5DD76 /* CategoryItemModel.swift in Sources */,
 				FCA450C4283D56F800F5DD76 /* AppDelegate.swift in Sources */,
 				FCA45105283FE05900F5DD76 /* CategoryViewModel.swift in Sources */,
 				FCA450C6283D56F800F5DD76 /* SceneDelegate.swift in Sources */,
