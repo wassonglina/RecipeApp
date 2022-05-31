@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum CategoryError: Error {
+enum NetworkError: Error {
     case unexpectedFormat
 }
 
-struct CategoryManager {
+struct NetworkManager {
 
     static func getCategoryData(url: String, completion: @escaping (Result<[CategoryItemModel], Error>) -> Void) {
         perform(urlString: url, transform: parseJSONCategory, completion: completion)
@@ -62,9 +62,9 @@ struct CategoryManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(CategoryPayload.self, from: encodedData)
-            let categoryModel: [CategoryItemModel] = decodedData.meals
+            let categoryModels: [CategoryItemModel] = decodedData.meals
                 .map { CategoryItemModel(name: $0.strMeal, image: $0.strMealThumb, id: $0.idMeal) }
-            return categoryModel
+            return categoryModels
         }
     }
 
@@ -89,12 +89,11 @@ struct CategoryManager {
                     ings.append(IngredientInfo(ingredient: ingredient, measurement: measurement))
                 }
                 i += 1
-                print(i)
             }
             return RecipeModel(name: title, instruction: instruction, image: image, ingredients: ings)
         }
 
-        throw CategoryError.unexpectedFormat
+        throw NetworkError.unexpectedFormat
     }
 }
 

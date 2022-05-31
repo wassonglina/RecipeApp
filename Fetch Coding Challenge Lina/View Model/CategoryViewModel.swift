@@ -20,7 +20,7 @@ class CategoryViewModel {
 
     //TODO: where to call self > [self] or self.evaluateResult
     func getCategoryData() {
-        CategoryManager.getCategoryData(url: categoryURL) { [self] category in
+        NetworkManager.getCategoryData(url: categoryURL) { [self] category in
             evaluateResult(result: category)
         }
     }

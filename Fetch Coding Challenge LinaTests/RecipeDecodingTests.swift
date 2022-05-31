@@ -27,7 +27,7 @@ class RecipeDecodingTests: XCTestCase {
         }
 """
         let data = json.data(using: .utf8)!
-        let decodedResult = try CategoryManager.parseJSONRecipe(data)
+        let decodedResult = try NetworkManager.parseJSONRecipe(data)
         let result = RecipeModel(name: "Battenberg Cake", instruction: "My instructions.", image: "https://www.themealdb.com/images/media/meals/ywwrsp1511720277.jpg", ingredients: [
             IngredientInfo(ingredient: "Butter", measurement: "175g"),
             IngredientInfo(ingredient: "Caster Sugar", measurement: "210")
@@ -56,14 +56,13 @@ class RecipeDecodingTests: XCTestCase {
         }
 """
         let data = json.data(using: .utf8)!
-        let decodedResult = try CategoryManager.parseJSONRecipe(data)
+        let decodedResult = try NetworkManager.parseJSONRecipe(data)
         let result = RecipeModel(name: "Battenberg Cake", instruction: "My instructions.", image: "https://www.themealdb.com/images/media/meals/ywwrsp1511720277.jpg", ingredients: [
             IngredientInfo(ingredient: "Butter", measurement: "175g"),
             IngredientInfo(ingredient: "Caster Sugar", measurement: "210g")
         ])
         XCTAssertEqual(decodedResult, result)
     }
-
 
     func testInvalidMeal() throws {
         let json = """
@@ -81,7 +80,7 @@ class RecipeDecodingTests: XCTestCase {
     }
 """
         let data = json.data(using: .utf8)!
-        XCTAssertThrowsError(try CategoryManager.parseJSONRecipe(data))
+        XCTAssertThrowsError(try NetworkManager.parseJSONRecipe(data))
     }
 }
 

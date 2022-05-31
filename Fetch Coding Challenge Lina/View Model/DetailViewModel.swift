@@ -26,7 +26,7 @@ class DetailViewModel {
 
     func getRecipe() {
         let instructionURL = "\(InstructionUrl)\(id)"
-        CategoryManager.getRecipeData(url: instructionURL) { [self] recipe in
+        NetworkManager.getRecipeData(url: instructionURL) { [self] recipe in
             evaluateResult(result: recipe)
         }
     }
