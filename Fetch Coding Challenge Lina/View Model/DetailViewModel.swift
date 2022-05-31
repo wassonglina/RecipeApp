@@ -26,8 +26,8 @@ class DetailViewModel {
 
     func getRecipe() {
         let instructionURL = "\(InstructionUrl)\(id)"
-        NetworkManager.getRecipeData(url: instructionURL) { [self] recipe in
-            evaluateResult(result: recipe)
+        NetworkManager.getRecipeData(url: instructionURL) { result in
+            self.evaluateResult(result: result)
         }
     }
 
@@ -64,7 +64,7 @@ class DetailViewModel {
     }
 
     func didCatchError(error: Error) {
-        // display error with this string
+        // display error depending on future UX choices (convert to string, etc ...)
         self.delegate?.didCatchError(error: error)
     }
 }

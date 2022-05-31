@@ -10,7 +10,6 @@
 		FC544D512841DE50005F011E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FC544D502841DE50005F011E /* Kingfisher */; };
 		FCA450C4283D56F800F5DD76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450C3283D56F800F5DD76 /* AppDelegate.swift */; };
 		FCA450C6283D56F800F5DD76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450C5283D56F800F5DD76 /* SceneDelegate.swift */; };
-		FCA450CB283D56F800F5DD76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA450C9283D56F800F5DD76 /* Main.storyboard */; };
 		FCA450CD283D56FD00F5DD76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA450CC283D56FD00F5DD76 /* Assets.xcassets */; };
 		FCA450D0283D56FD00F5DD76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA450CE283D56FD00F5DD76 /* LaunchScreen.storyboard */; };
 		FCA450DB283D56FE00F5DD76 /* RecipeDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA450DA283D56FE00F5DD76 /* RecipeDecodingTests.swift */; };
@@ -49,7 +48,6 @@
 		FCA450C0283D56F700F5DD76 /* Fetch Coding Challenge Lina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fetch Coding Challenge Lina.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA450C3283D56F800F5DD76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCA450C5283D56F800F5DD76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FCA450CA283D56F800F5DD76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCA450CC283D56FD00F5DD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCA450CF283D56FD00F5DD76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCA450D1283D56FD00F5DD76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				FCA45106283FE05F00F5DD76 /* View Model */,
 				FCA45100283EA2E000F5DD76 /* View */,
 				FCA45101283EA2F100F5DD76 /* Controller */,
-				FCA450C9283D56F800F5DD76 /* Main.storyboard */,
 				FCA450CC283D56FD00F5DD76 /* Assets.xcassets */,
 				FCA450CE283D56FD00F5DD76 /* LaunchScreen.storyboard */,
 				FCA450D1283D56FD00F5DD76 /* Info.plist */,
@@ -300,7 +297,6 @@
 			files = (
 				FCA450D0283D56FD00F5DD76 /* LaunchScreen.storyboard in Resources */,
 				FCA450CD283D56FD00F5DD76 /* Assets.xcassets in Resources */,
-				FCA450CB283D56F800F5DD76 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,14 +369,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FCA450C9283D56F800F5DD76 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FCA450CA283D56F800F5DD76 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FCA450CE283D56FD00F5DD76 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

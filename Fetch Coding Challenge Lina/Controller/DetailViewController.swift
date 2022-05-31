@@ -62,8 +62,8 @@ class DetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor),
         ])
     }
 
@@ -76,7 +76,7 @@ class DetailViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.contentLayoutGuide.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor), //read up on this
+            scrollView.contentLayoutGuide.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
         ])
     }
 
@@ -136,10 +136,6 @@ extension DetailViewController: DetailViewModelDelegate {
         instructionLabel.text = instruction
         ingredients.forEach {
             let ingredientLabel = UILabel()
-            //                let attributedText = NSAttributedString(string: mea, attributes: [
-            //                    NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)
-            //                ])
-            //                ingredientLabel.attributedText = attributedText
             ingredientLabel.text = "\($0.measurement) \($0.ingredient)"
             self.ingredientStackView.addArrangedSubview(ingredientLabel)
 

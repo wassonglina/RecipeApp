@@ -46,6 +46,7 @@ class CategoryViewModel {
     }
 
     func didCatchError(error: Error) {
+        // display error depending on future UX choices (convert to string, etc ...)
         self.delegate?.didCatchError(error: error)
     }
 }

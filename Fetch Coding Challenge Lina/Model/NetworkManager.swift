@@ -9,6 +9,7 @@ import Foundation
 
 enum NetworkError: Error {
     case unexpectedFormat
+    case invalidURL
 }
 
 struct NetworkManager {
@@ -45,7 +46,10 @@ struct NetworkManager {
 
     private static func performNetworkRequest(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
         //return failure or throw in future version
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
         let task = URLSession.shared
             .dataTask(with: url) { data, response, error in
                 if let error = error {
