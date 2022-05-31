@@ -23,8 +23,8 @@ class DetailViewModel {
     }
 
     func getRecipe() {
-        NetworkManager.getRecipeData(id: id) { result in
-            self.evaluateResult(result: result)
+        NetworkManager.getRecipeData(id: id) { [weak self] in
+            self?.evaluateResult(result: $0)
         }
     }
 

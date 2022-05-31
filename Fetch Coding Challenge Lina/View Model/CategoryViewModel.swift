@@ -17,8 +17,8 @@ class CategoryViewModel {
     weak var delegate: CategoryViewModelDelegate?
 
     func getCategoryData() {
-        NetworkManager.getCategoryData {
-            self.evaluateResult(result: $0)
+        NetworkManager.getCategoryData { [weak self] in
+            self?.evaluateResult(result: $0)
         }
     }
 
