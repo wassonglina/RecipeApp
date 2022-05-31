@@ -14,11 +14,13 @@ enum NetworkError: Error {
 
 struct NetworkManager {
 
-    static func getCategoryData(url: String, completion: @escaping (Result<[CategoryItemModel], Error>) -> Void) {
+    static func getCategoryData(completion: @escaping (Result<[CategoryItemModel], Error>) -> Void) {
+        let url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
         perform(urlString: url, transform: parseJSONCategory, completion: completion)
     }
 
-    static func getRecipeData(url: String, completion: @escaping (Result<RecipeModel, Error>) -> Void) {
+    static func getRecipeData(id: String, completion: @escaping (Result<RecipeModel, Error>) -> Void) {
+        let url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(id)"
         perform(urlString: url, transform: parseJSONRecipe, completion: completion)
     }
 

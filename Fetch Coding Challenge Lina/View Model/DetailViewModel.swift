@@ -15,8 +15,6 @@ protocol DetailViewModelDelegate: AnyObject {
 
 class DetailViewModel {
 
-    private let InstructionUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="
-
     private let id: String
     weak var delegate: DetailViewModelDelegate?
 
@@ -25,13 +23,11 @@ class DetailViewModel {
     }
 
     func getRecipe() {
-        let instructionURL = "\(InstructionUrl)\(id)"
-        NetworkManager.getRecipeData(url: instructionURL) { result in
+        NetworkManager.getRecipeData(id: id) { result in
             self.evaluateResult(result: result)
         }
     }
 
-    //TODO: Repeat (in CategoryViewModel)
     func evaluateResult(result: (Result<RecipeModel, Error>)) {
         switch result {
         case .success(let recipeData):
@@ -42,9 +38,7 @@ class DetailViewModel {
     }
 
     func didFetchRecipe(_ recipe: RecipeModel) {
-        //do any additional preparation on category for UI in here, then pass to VC
         let name = recipe.name.capitalized
-
         let instruction = Self.sanitizeInstruction(with: recipe.instruction)
 
         DispatchQueue.main.async {

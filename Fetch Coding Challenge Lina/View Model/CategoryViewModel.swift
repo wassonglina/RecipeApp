@@ -14,11 +14,10 @@ protocol CategoryViewModelDelegate: AnyObject {
 
 class CategoryViewModel {
 
-    private let categoryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
     weak var delegate: CategoryViewModelDelegate?
 
     func getCategoryData() {
-        NetworkManager.getCategoryData(url: categoryURL) {
+        NetworkManager.getCategoryData {
             self.evaluateResult(result: $0)
         }
     }
