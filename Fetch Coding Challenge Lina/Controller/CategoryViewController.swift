@@ -29,6 +29,7 @@ class CategoryViewController: UIViewController {
         self.title = "Dessert"
 
         dataSource = UITableViewDiffableDataSource<Int, CategoryItemModel>(tableView: tableView) { tableView, indexPath, item in
+
             let cell = tableView.dequeueReusableCell(withIdentifier: RecipeTableViewCell.identifier, for: indexPath) as! RecipeTableViewCell
             //if it's getting more complex make view model for cell to pass on information
             cell.setTitle(with: item.name.capitalized)
@@ -81,13 +82,20 @@ extension CategoryViewController: CategoryViewModelDelegate {
     }
 }
 
+//test with different network conditions
 extension CategoryViewController: UITableViewDataSourcePrefetching {
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let urls = indexPaths
-            .compactMap { dataSource.itemIdentifier(for: $0)?.image }
-            .compactMap { URL(string: $0) }
-        ImagePrefetcher(urls: urls).start()
+            .compactMap { dataSource.itemIdentifier(for: $0)?.image }   //cmopact map bc data source returns optional
+            .compactMap { URL(string: $0) }  //compact map on URLString bc URL() returns optional
+        ImagePrefetcher(urls: urls).start()     //ImagePrefetcher accepts not optionals
     }
 }
+
+
+
+//activity indicator > UIActivityIndicatorView().isAnimating = true  > data in > hide
+
+
 
