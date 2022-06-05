@@ -139,7 +139,11 @@ extension DetailViewController: DetailViewModelDelegate {
         }
     }
 
-    func didCatchError(error: Error) {
-        print(#function, error)
+    func didCatchError(message: String) {
+
+        let ac = UIAlertController(title: message, message: "Please try again later.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        ac.addAction(action)
+        present(ac, animated: true)
     }
 }

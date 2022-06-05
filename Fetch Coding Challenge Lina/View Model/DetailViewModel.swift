@@ -9,7 +9,7 @@ import Foundation
 
 protocol DetailViewModelDelegate: AnyObject {
     func prepareDetailUI(name: String, image: String, ingredients: [IngredientInfo], instruction: String)
-    func didCatchError(error: Error)
+    func didCatchError(message: String)
 }
 
 class DetailViewModel {
@@ -28,7 +28,7 @@ class DetailViewModel {
     }
 
     //private
-    func evaluateResult(result: (Result<RecipeModel, Error>)) {
+    func evaluateResult(result: (Result<RecipeModel, NetworkError>)) {
         switch result {
         case .success(let recipeData):
             didFetchRecipe(recipeData)
@@ -65,11 +65,22 @@ class DetailViewModel {
         //intentionally didn't remove existing step numbers as this made recipes confusing (e.g. Portuguese Custard Tarts)
     }
 
-    func didCatchError(error: Error) {
+    func didCatchError(error: NetworkError) {
         // display error depending on future UX choices (convert to string, etc ...)
-        print(String(describing: error))
+
+        let errorMessage: String
+
+        switch error {
+        case .invalidURL, .transformationError, .unexpectedFormat:
+            errorMessage = "Something went wrong."
+        case .urlSession(let nSError):
+            errorMessage = nSError.localizedDescription
+        }
+
+        delegate?.didCatchError(message: errorMessage)
+
         // get error code to print localized error desciption: Code=-1009 "The Internet connection appears to be offline."
-        self.delegate?.didCatchError(error: error)
+      //  self.delegate?.didCatchError(error: error)
     }
 }
 

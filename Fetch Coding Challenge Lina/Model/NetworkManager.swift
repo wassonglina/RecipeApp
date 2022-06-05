@@ -10,6 +10,8 @@ import Foundation
 enum NetworkError: Error {
     case unexpectedFormat
     case invalidURL
+    case transformationError
+    case urlSession(NSError)
  //   case unexpectedNetworkResponse      //added later
 
 }
@@ -17,12 +19,12 @@ enum NetworkError: Error {
 struct NetworkManager {
 
     //static bc test > could move to seperate struct
-    static func getCategoryData(completion: @escaping (Result<[CategoryItemModel], Error>) -> Void) {
+    static func getCategoryData(completion: @escaping (Result<[CategoryItemModel], NetworkError>) -> Void) {
         let url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
         perform(urlString: url, transform: parseJSONCategory, completion: completion)
     }
 
-    static func getRecipeData(id: String, completion: @escaping (Result<RecipeModel, Error>) -> Void) {
+    static func getRecipeData(id: String, completion: @escaping (Result<RecipeModel, NetworkError>) -> Void) {
         let url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(id)"
         perform(urlString: url, transform: parseJSONRecipe, completion: completion)
     }
@@ -30,7 +32,7 @@ struct NetworkManager {
 
     private static func perform<T>(urlString: String,
                                    transform: @escaping (Data) throws -> T,     //takes data and returns model > what parseJson does
-                                   completion: @escaping (Result<T, Error>) -> Void
+                                   completion: @escaping (Result<T, NetworkError>) -> Void
     ) {
         performNetworkRequest(with: urlString) { result in          //result in new completion handler passed into persormNETrequest
 
@@ -40,7 +42,7 @@ struct NetworkManager {
                     let entity = try transform(data)
                     completion(.success(entity))
                 } catch {
-                    completion(.failure(error))
+                    completion(.failure(NetworkError.transformationError))
                 }
             case .failure(let error):
                 completion(.failure(error))  //viewmodel evaluate result with error
@@ -48,7 +50,7 @@ struct NetworkManager {
         }
     }
 
-    private static func performNetworkRequest(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    private static func performNetworkRequest(with urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidURL))
             return
@@ -56,7 +58,11 @@ struct NetworkManager {
         let task = URLSession.shared
             .dataTask(with: url) { data, response, error in
                 if let error = error {
-                    completion(.failure(error))
+
+                    let networkError = NetworkError.urlSession(error as NSError) //cast as (not as?) NSError bc not failable
+
+                    completion(.failure(networkError))
+
                 } else if let safeData = data {
                     completion(.success(safeData))
                 }

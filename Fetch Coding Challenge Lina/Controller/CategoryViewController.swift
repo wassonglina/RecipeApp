@@ -77,8 +77,11 @@ extension CategoryViewController: CategoryViewModelDelegate {
         //update here to hide potential loading state e.g. with enum
     }
 
-    func didCatchError(error: Error) {
-        print("Error")
+    func didCatchError(message: String) {
+        let ac = UIAlertController(title: message, message: "Please try again.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        ac.addAction(action)
+        present(ac, animated: true)
     }
 }
 
