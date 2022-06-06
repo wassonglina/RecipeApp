@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 
 
+
 class DetailViewController: UIViewController {
 
     private let scrollView = UIScrollView()
@@ -20,10 +21,15 @@ class DetailViewController: UIViewController {
     private let ingredientStackView = UIStackView()
     private let imageView = UIImageView()
     private let ingredientsLabel = UILabel()
+    private let activityIndicator = UIActivityIndicatorView()
+
+    private var top = NSLayoutConstraint()
+    private var bottom =  NSLayoutConstraint()
 
     private let customSpacing = 40.0
     private let customSpacingLabel = 15.0
 
+    //TODO: why not call override init- super.init??  >> not overriding it making new initializer and then overriding it
     init(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
         super.init(nibName: nil, bundle: nil)
@@ -49,6 +55,23 @@ class DetailViewController: UIViewController {
         addIngredientStackView()
         addInstructionTitleLabel()
         addInstructionsLabel()
+
+        stackView.isHidden = true
+    }
+
+    //call with LoadingState enum case loading
+    // create and start in one function or start seperate?
+    private func startActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.style = .large
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
 
     private func addScrollView() {
@@ -134,16 +157,36 @@ extension DetailViewController: DetailViewModelDelegate {
             let ingredientLabel = UILabel()
             ingredientLabel.text = "\($0.measurement) \($0.ingredient)"
             self.ingredientStackView.addArrangedSubview(ingredientLabel)
-
-            //update here to hide potential loading state e.g. with enum
         }
+        //update here to hide potential loading state e.g. with enum
+
+        stackView.isHidden = false
+        activityIndicator.stopAnimating()
     }
 
     func didCatchError(message: String) {
 
+        activityIndicator.stopAnimating()
+        
         let ac = UIAlertController(title: message, message: "Please try again later.", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default)
         ac.addAction(action)
         present(ac, animated: true)
     }
+
+    func setState(state: LoadingState?) {
+
+        switch state {
+        case .loading:
+            startActivityIndicator()
+        case .loaded(let name, let image, let ingredients, let instruction):
+            prepareDetailUI(name: name, image: image, ingredients: ingredients, instruction: instruction)
+        case .failed(let error):
+            didCatchError(message: error)
+        case nil:       //case nil instead default: aknowledge new case
+            didCatchError(message: "Something went totally wrong.")
+        }
+    }
 }
+
+

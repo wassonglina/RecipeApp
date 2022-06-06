@@ -8,22 +8,37 @@
 import Foundation
 
 protocol DetailViewModelDelegate: AnyObject {
-    func prepareDetailUI(name: String, image: String, ingredients: [IngredientInfo], instruction: String)
-    func didCatchError(message: String)
+    func setState(state: LoadingState?)
+//    func prepareDetailUI(name: String, image: String, ingredients: [IngredientInfo], instruction: String)
+//    func didCatchError(message: String)
 }
+
+enum LoadingState {
+    case loading
+    case loaded(name: String, image: String, ingredients: [IngredientInfo], instruction: String)
+    case failed(String)
+}
+
 
 class DetailViewModel {
 
     private let id: String
     weak var delegate: DetailViewModelDelegate?
+    private var loadingState: LoadingState?     //make loading state optional unless sure that state loading will always be initial state > then set to .loading like so:
+ //   private var loadingState: LoadingState = .loading
 
     init(id: String) {
         self.id = id
     }
 
+        //move loading state in here
     func getRecipe() {
         NetworkManager.getRecipeData(id: id) { [weak self] in
             self?.evaluateResult(result: $0)
+        }
+        loadingState = .loading
+        DispatchQueue.main.async {
+            self.delegate?.setState(state: self.loadingState)
         }
     }
 
@@ -37,14 +52,18 @@ class DetailViewModel {
         }
     }
 
+    //move loading state in here with associated data
+   // delegate.setState > enum with data
     //private
     func didFetchRecipe(_ recipe: RecipeModel) {
         let name = recipe.name.capitalized
         let instruction = Self.sanitizeInstruction(with: recipe.instruction)
 
+        loadingState = .loaded(name: name, image: recipe.image, ingredients: recipe.ingredients, instruction: instruction)
+
         //prepare so everything is on main thread for UI
         DispatchQueue.main.async {
-            self.delegate?.prepareDetailUI(name: name, image: recipe.image, ingredients: recipe.ingredients, instruction: instruction)
+            self.delegate?.setState(state: self.loadingState)
         }
     }
 
@@ -77,10 +96,12 @@ class DetailViewModel {
             errorMessage = nSError.localizedDescription
         }
 
-        delegate?.didCatchError(message: errorMessage)
+        loadingState = .failed(errorMessage)
 
+        DispatchQueue.main.async {
+            self.delegate?.setState(state: self.loadingState)
+        }
         // get error code to print localized error desciption: Code=-1009 "The Internet connection appears to be offline."
-      //  self.delegate?.didCatchError(error: error)
     }
 }
 

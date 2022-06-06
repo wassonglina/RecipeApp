@@ -84,8 +84,6 @@ struct NetworkManager {
 
     static func parseJSONRecipe(_ encodedData: Data) throws -> RecipeModel {
 
-        print(encodedData)
-
         // JSONSerialization returns Any > to access Data need be turned into specific types
         // breakpoint with access to encodedData
         // type in console: po try JSONSerialization.jsonObject(with: encodedData, options: []) as? Any    (type "up")
@@ -114,10 +112,8 @@ struct NetworkManager {
                 }
                 i += 1
             }
-            print(decodedData)
             return RecipeModel(name: title, instruction: instruction, image: image, ingredients: ings)
         }
-
         throw NetworkError.unexpectedFormat
     }
 }
