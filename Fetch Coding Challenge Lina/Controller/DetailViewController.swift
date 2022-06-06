@@ -55,13 +55,11 @@ class DetailViewController: UIViewController {
         addIngredientStackView()
         addInstructionTitleLabel()
         addInstructionsLabel()
-
-        stackView.isHidden = true
     }
 
     //call with LoadingState enum case loading
-    // create and start in one function or start seperate?
     private func startActivityIndicator() {
+        stackView.isHidden = true
         view.addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.style = .large
@@ -148,7 +146,20 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: DetailViewModelDelegate {
 
-    func prepareDetailUI(name: String, image: String, ingredients: [IngredientInfo], instruction: String) {
+    func setState(state: LoadingState?) {
+        switch state {
+        case .loading:
+            startActivityIndicator()
+        case .loaded(let name, let image, let ingredients, let instruction):
+            prepareDetailUI(name: name, image: image, ingredients: ingredients, instruction: instruction)
+        case .failed(let error):
+            didCatchError(message: error)
+        case nil:       //case nil instead default: aknowledge new case
+            didCatchError(message: "Something went wrong.")
+        }
+    }
+
+    private func prepareDetailUI(name: String, image: String, ingredients: [IngredientInfo], instruction: String) {
         titleLabel.text = name
         let url = URL(string: image)
         imageView.kf.setImage(with: url)
@@ -158,34 +169,17 @@ extension DetailViewController: DetailViewModelDelegate {
             ingredientLabel.text = "\($0.measurement) \($0.ingredient)"
             self.ingredientStackView.addArrangedSubview(ingredientLabel)
         }
-        //update here to hide potential loading state e.g. with enum
 
         stackView.isHidden = false
         activityIndicator.stopAnimating()
     }
 
-    func didCatchError(message: String) {
-
+    private func didCatchError(message: String) {
         activityIndicator.stopAnimating()
-        
         let ac = UIAlertController(title: message, message: "Please try again later.", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default)
         ac.addAction(action)
         present(ac, animated: true)
-    }
-
-    func setState(state: LoadingState?) {
-
-        switch state {
-        case .loading:
-            startActivityIndicator()
-        case .loaded(let name, let image, let ingredients, let instruction):
-            prepareDetailUI(name: name, image: image, ingredients: ingredients, instruction: instruction)
-        case .failed(let error):
-            didCatchError(message: error)
-        case nil:       //case nil instead default: aknowledge new case
-            didCatchError(message: "Something went totally wrong.")
-        }
     }
 }
 

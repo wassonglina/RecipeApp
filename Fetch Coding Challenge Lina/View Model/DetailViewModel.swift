@@ -9,14 +9,6 @@ import Foundation
 
 protocol DetailViewModelDelegate: AnyObject {
     func setState(state: LoadingState?)
-//    func prepareDetailUI(name: String, image: String, ingredients: [IngredientInfo], instruction: String)
-//    func didCatchError(message: String)
-}
-
-enum LoadingState {
-    case loading
-    case loaded(name: String, image: String, ingredients: [IngredientInfo], instruction: String)
-    case failed(String)
 }
 
 

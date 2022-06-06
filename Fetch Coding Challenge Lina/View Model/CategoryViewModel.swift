@@ -8,20 +8,22 @@
 import Foundation
 
 protocol CategoryViewModelDelegate: AnyObject {
-    func prepareCategoryUI(with category: [CategoryItemModel])
-    func didCatchError(message: String)
+    func setState(state: LoadingStateCategory)
 }
 
 class CategoryViewModel {
 
     weak var delegate: CategoryViewModelDelegate?
+    private var loadingState: LoadingStateCategory = .loading
 
     func getCategoryData() {
         NetworkManager.getCategoryData { [weak self] in
             self?.evaluateResult(result: $0)
         }
+        loadingState = .loading
     }
 
+    //private
     func evaluateResult(result: (Result<[CategoryItemModel], NetworkError>)) {
         switch result {
         case .success(let categoryData):
@@ -31,15 +33,19 @@ class CategoryViewModel {
         }
     }
 
+    //private
     func didFetchCategory(_ category: [CategoryItemModel]) {
         let sortedCategory = category
             .sorted { $0.name < $1.name }
 
+        loadingState = .loaded(sortedCategory)
+
         DispatchQueue.main.async {
-            self.delegate?.prepareCategoryUI(with: sortedCategory)
+            self.delegate?.setState(state: self.loadingState)
         }
     }
 
+    //private
     func didCatchError(error: NetworkError) {
 
         let errorMessage: String
@@ -51,8 +57,10 @@ class CategoryViewModel {
             errorMessage = nsError.localizedDescription
         }
 
+        loadingState = .failed(errorMessage)
+
         DispatchQueue.main.async {
-        self.delegate?.didCatchError(message: errorMessage)
+            self.delegate?.setState(state: self.loadingState)
         }
         // display error depending on future UX choices (convert to string, etc ...)
 

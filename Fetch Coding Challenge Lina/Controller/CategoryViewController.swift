@@ -15,6 +15,7 @@ class CategoryViewController: UIViewController {
     private var dataSource: UITableViewDiffableDataSource<Int, CategoryItemModel>!
     private let categoryViewModel = CategoryViewModel()
     private let tableView = UITableView()
+    private let activityIndicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,19 @@ class CategoryViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+
+        startActivityIndicator()
+    }
+
+    func startActivityIndicator() {
+        activityIndicator.style = .large
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+
+        tableView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,19 +83,31 @@ extension CategoryViewController: UITableViewDelegate {
 
 extension CategoryViewController: CategoryViewModelDelegate {
 
-    func prepareCategoryUI(with category: [CategoryItemModel]) {
+    func setState(state: LoadingStateCategory) {
+        switch state {
+        case .loading:
+            startActivityIndicator()
+        case .loaded(let category):
+            prepareCategoryUI(with: category)
+        case .failed(let errorMsg):
+            didCatchError(message: errorMsg)
+        }
+    }
+
+    private func prepareCategoryUI(with category: [CategoryItemModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, CategoryItemModel>()
         snapshot.appendSections([0])
         snapshot.appendItems(category)
         dataSource.apply(snapshot, animatingDifferences: false)
-        //update here to hide potential loading state e.g. with enum
+        activityIndicator.stopAnimating()
     }
 
-    func didCatchError(message: String) {
+    private func didCatchError(message: String) {
         let ac = UIAlertController(title: message, message: "Please try again.", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default)
         ac.addAction(action)
         present(ac, animated: true)
+        activityIndicator.stopAnimating()
     }
 }
 
@@ -95,10 +121,6 @@ extension CategoryViewController: UITableViewDataSourcePrefetching {
         ImagePrefetcher(urls: urls).start()     //ImagePrefetcher accepts not optionals
     }
 }
-
-
-
-//activity indicator > UIActivityIndicatorView().isAnimating = true  > data in > hide
 
 
 
