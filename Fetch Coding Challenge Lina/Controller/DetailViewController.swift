@@ -1,15 +1,10 @@
 //
-//  DetailViewController.swift
-//  Fetch Coding Challenge Lina
-//
 //  Created by Lina on 5/26/22.
 //
 
 
 import UIKit
 import Kingfisher
-
-
 
 class DetailViewController: UIViewController {
 
@@ -29,7 +24,6 @@ class DetailViewController: UIViewController {
     private let customSpacing = 40.0
     private let customSpacingLabel = 15.0
 
-    //TODO: why not call override init- super.init??  >> not overriding it making new initializer and then overriding it
     init(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
         super.init(nibName: nil, bundle: nil)
@@ -55,17 +49,16 @@ class DetailViewController: UIViewController {
         addIngredientStackView()
         addInstructionTitleLabel()
         addInstructionsLabel()
+        stackView.isHidden = true
     }
 
-    //call with LoadingState enum case loading
     private func startActivityIndicator() {
-        stackView.isHidden = true
-        view.addSubview(activityIndicator)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.style = .large
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
 
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -169,7 +162,6 @@ extension DetailViewController: DetailViewModelDelegate {
             ingredientLabel.text = "\($0.measurement) \($0.ingredient)"
             self.ingredientStackView.addArrangedSubview(ingredientLabel)
         }
-
         stackView.isHidden = false
         activityIndicator.stopAnimating()
     }

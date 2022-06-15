@@ -1,7 +1,4 @@
 //
-//  CategoryViewModel.swift
-//  Fetch Coding Challenge Lina
-//
 //  Created by Lina on 5/26/22.
 //
 
@@ -23,8 +20,7 @@ class CategoryViewModel {
         loadingState = .loading
     }
 
-    //private
-    func evaluateResult(result: (Result<[CategoryItemModel], NetworkError>)) {
+    private func evaluateResult(result: (Result<[CategoryItemModel], NetworkError>)) {
         switch result {
         case .success(let categoryData):
             didFetchCategory(categoryData)
@@ -33,8 +29,7 @@ class CategoryViewModel {
         }
     }
 
-    //private
-    func didFetchCategory(_ category: [CategoryItemModel]) {
+    private func didFetchCategory(_ category: [CategoryItemModel]) {
         let sortedCategory = category
             .sorted { $0.name < $1.name }
 
@@ -45,13 +40,12 @@ class CategoryViewModel {
         }
     }
 
-    //private
-    func didCatchError(error: NetworkError) {
 
+    private func didCatchError(error: NetworkError) {
         let errorMessage: String
 
         switch error {
-        case .unexpectedFormat, .invalidURL, .transformationError:
+        case .invalidURL, .transformationError, .unexpectedNetworkResponse:
             errorMessage = "Something went wrong."
         case .urlSession(let nsError):
             errorMessage = nsError.localizedDescription
@@ -62,8 +56,6 @@ class CategoryViewModel {
         DispatchQueue.main.async {
             self.delegate?.setState(state: self.loadingState)
         }
-        // display error depending on future UX choices (convert to string, etc ...)
-
     }
 }
 

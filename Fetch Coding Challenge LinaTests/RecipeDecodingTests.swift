@@ -1,7 +1,4 @@
 //
-//  Fetch_Coding_Challenge_LinaTests.swift
-//  Fetch Coding Challenge LinaTests
-//
 //  Created by Lina on 5/24/22.
 //
 

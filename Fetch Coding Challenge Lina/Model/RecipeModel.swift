@@ -1,7 +1,4 @@
 //
-//  RecipeModel.swift
-//  Fetch Coding Challenge Lina
-//
 //  Created by Lina on 5/30/22.
 //
 

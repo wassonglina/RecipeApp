@@ -1,7 +1,4 @@
 //
-//  CategoryViewController.swift
-//  Fetch Coding Challenge Lina
-//
 //  Created by Lina on 5/24/22.
 //
 
@@ -49,6 +46,8 @@ class CategoryViewController: UIViewController {
         ])
 
         startActivityIndicator()
+        tableView.isHidden = true
+        view.backgroundColor = .systemBackground
     }
 
     func startActivityIndicator() {
@@ -56,10 +55,10 @@ class CategoryViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
 
-        tableView.addSubview(activityIndicator)
+        view.addSubview(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -100,6 +99,7 @@ extension CategoryViewController: CategoryViewModelDelegate {
         snapshot.appendItems(category)
         dataSource.apply(snapshot, animatingDifferences: false)
         activityIndicator.stopAnimating()
+        tableView.isHidden = false
     }
 
     private func didCatchError(message: String) {
@@ -111,14 +111,13 @@ extension CategoryViewController: CategoryViewModelDelegate {
     }
 }
 
-//test with different network conditions
 extension CategoryViewController: UITableViewDataSourcePrefetching {
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let urls = indexPaths
-            .compactMap { dataSource.itemIdentifier(for: $0)?.image }   //cmopact map bc data source returns optional
-            .compactMap { URL(string: $0) }  //compact map on URLString bc URL() returns optional
-        ImagePrefetcher(urls: urls).start()     //ImagePrefetcher accepts not optionals
+            .compactMap { dataSource.itemIdentifier(for: $0)?.image }
+            .compactMap { URL(string: $0) }
+        ImagePrefetcher(urls: urls).start()
     }
 }
 

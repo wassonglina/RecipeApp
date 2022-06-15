@@ -1,7 +1,4 @@
 //
-//  DetailViewModel.swift
-//  Fetch Coding Challenge Lina
-//
 //  Created by Lina on 5/26/22.
 //
 
@@ -16,14 +13,12 @@ class DetailViewModel {
 
     private let id: String
     weak var delegate: DetailViewModelDelegate?
-    private var loadingState: LoadingState?     //make loading state optional unless sure that state loading will always be initial state > then set to .loading like so:
- //   private var loadingState: LoadingState = .loading
+    private var loadingState: LoadingState?     //make loading state optional unless state .loading will be initial state
 
     init(id: String) {
         self.id = id
     }
 
-        //move loading state in here
     func getRecipe() {
         NetworkManager.getRecipeData(id: id) { [weak self] in
             self?.evaluateResult(result: $0)
@@ -34,8 +29,7 @@ class DetailViewModel {
         }
     }
 
-    //private
-    func evaluateResult(result: (Result<RecipeModel, NetworkError>)) {
+    private func evaluateResult(result: (Result<RecipeModel, NetworkError>)) {
         switch result {
         case .success(let recipeData):
             didFetchRecipe(recipeData)
@@ -44,22 +38,18 @@ class DetailViewModel {
         }
     }
 
-    //move loading state in here with associated data
-   // delegate.setState > enum with data
-    //private
-    func didFetchRecipe(_ recipe: RecipeModel) {
+    private func didFetchRecipe(_ recipe: RecipeModel) {
         let name = recipe.name.capitalized
         let instruction = Self.sanitizeInstruction(with: recipe.instruction)
 
         loadingState = .loaded(name: name, image: recipe.image, ingredients: recipe.ingredients, instruction: instruction)
 
-        //prepare so everything is on main thread for UI
         DispatchQueue.main.async {
             self.delegate?.setState(state: self.loadingState)
         }
     }
 
-    //static because public for test > move into seperate class with specific name (class MealSanitizer)
+    //static for test > move into seperate class with specific name (class MealSanitizer)
     static func sanitizeInstruction(with instruction: String) -> String {
 
         //strange line seperator some recipes use: U+2028
@@ -77,12 +67,10 @@ class DetailViewModel {
     }
 
     func didCatchError(error: NetworkError) {
-        // display error depending on future UX choices (convert to string, etc ...)
-
         let errorMessage: String
 
         switch error {
-        case .invalidURL, .transformationError, .unexpectedFormat:
+        case .invalidURL, .transformationError, .unexpectedNetworkResponse:
             errorMessage = "Something went wrong."
         case .urlSession(let nSError):
             errorMessage = nSError.localizedDescription
@@ -93,7 +81,6 @@ class DetailViewModel {
         DispatchQueue.main.async {
             self.delegate?.setState(state: self.loadingState)
         }
-        // get error code to print localized error desciption: Code=-1009 "The Internet connection appears to be offline."
     }
 }
 

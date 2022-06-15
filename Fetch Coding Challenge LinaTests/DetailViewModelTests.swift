@@ -1,7 +1,4 @@
 //
-//  DetailViewModelTests.swift
-//  Fetch Coding Challenge LinaTests
-//
 //  Created by Lina on 5/30/22.
 //
 

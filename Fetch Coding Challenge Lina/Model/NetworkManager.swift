@@ -1,24 +1,20 @@
 //
-//  CategoryManager.swift
-//  Fetch Coding Challenge Lina
-//
 //  Created by Lina on 5/25/22.
 //
 
 import Foundation
 
 enum NetworkError: Error {
-    case unexpectedFormat
     case invalidURL
     case transformationError
     case urlSession(NSError)
- //   case unexpectedNetworkResponse      //added later
+    case unexpectedNetworkResponse
 
 }
 
 struct NetworkManager {
 
-    //static bc test > could move to seperate struct
+    //static for test > could move into seperate struct
     static func getCategoryData(completion: @escaping (Result<[CategoryItemModel], NetworkError>) -> Void) {
         let url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert"
         perform(urlString: url, transform: parseJSONCategory, completion: completion)
@@ -31,10 +27,10 @@ struct NetworkManager {
 
 
     private static func perform<T>(urlString: String,
-                                   transform: @escaping (Data) throws -> T,     //takes data and returns model > what parseJson does
+                                   transform: @escaping (Data) throws -> T, 
                                    completion: @escaping (Result<T, NetworkError>) -> Void
     ) {
-        performNetworkRequest(with: urlString) { result in          //result in new completion handler passed into persormNETrequest
+        performNetworkRequest(with: urlString) { result in
 
             switch result {
             case .success(let data):
@@ -45,7 +41,7 @@ struct NetworkManager {
                     completion(.failure(NetworkError.transformationError))
                 }
             case .failure(let error):
-                completion(.failure(error))  //viewmodel evaluate result with error
+                completion(.failure(error))
             }
         }
     }
@@ -58,45 +54,33 @@ struct NetworkManager {
         let task = URLSession.shared
             .dataTask(with: url) { data, response, error in
                 if let error = error {
-
-                    let networkError = NetworkError.urlSession(error as NSError) //cast as (not as?) NSError bc not failable
-
+                    let networkError = NetworkError.urlSession(error as NSError) //cast as NSError (not as?) bc not failable
                     completion(.failure(networkError))
-
                 } else if let safeData = data {
                     completion(.success(safeData))
+                } else {
+                    completion(.failure(NetworkError.unexpectedNetworkResponse))
                 }
-              //  completion(.failure(unexpectedNetworkResponse))       added later
             }
         task.resume()
     }
 
-    //static bc test
+    //static for test
     static func parseJSONCategory(_ encodedData: Data) throws -> [CategoryItemModel] {
         let decoder = JSONDecoder()
-//        do {
-            let decodedData = try decoder.decode(CategoryPayload.self, from: encodedData)
-            let categoryModels: [CategoryItemModel] = decodedData.meals
-                .map { CategoryItemModel(name: $0.strMeal, image: $0.strMealThumb, id: $0.idMeal) }
-            return categoryModels
-  //      }
+        let decodedData = try decoder.decode(CategoryPayload.self, from: encodedData)
+        let categoryModels: [CategoryItemModel] = decodedData.meals
+            .map { CategoryItemModel(name: $0.strMeal, image: $0.strMealThumb, id: $0.idMeal) }
+        return categoryModels
     }
 
     static func parseJSONRecipe(_ encodedData: Data) throws -> RecipeModel {
 
-        // JSONSerialization returns Any > to access Data need be turned into specific types
-        // breakpoint with access to encodedData
-        // type in console: po try JSONSerialization.jsonObject(with: encodedData, options: []) as? Any    (type "up")
-        // as? [ String : Any ]
-        // as? [ String : [Any] ]
-        // as? [ String : [[String : Any]] ]
-        // as? [ String : [[String : String?]] ]  > optional String because some hold nil (null)
-
         if let decodedData = try JSONSerialization.jsonObject(with: encodedData, options: []) as? [String : [[String : String?]]],
 
-            let meals = decodedData["meals"],            //dictionary > return optional array meals > if let makes non optional > exists if nil
-           let meal = meals.first,      //array     > if let makes non optional > exists if nil
-           let title = meal["strMeal"] as? String,      //dictionary  > if let makes non optional > exists if nil  >> key gets optional optional string > and typecasting to String
+            let meals = decodedData["meals"],
+           let meal = meals.first,
+           let title = meal["strMeal"] as? String,
            let instruction = meal["strInstructions"] as? String,
            let image = meal["strMealThumb"] as? String {
 
@@ -114,7 +98,7 @@ struct NetworkManager {
             }
             return RecipeModel(name: title, instruction: instruction, image: image, ingredients: ings)
         }
-        throw NetworkError.unexpectedFormat
+        throw NetworkError.transformationError
     }
 }
 

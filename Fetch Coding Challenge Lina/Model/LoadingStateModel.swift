@@ -1,7 +1,4 @@
 //
-//  LoadingStateModel.swift
-//  Fetch Coding Challenge Lina
-//
 //  Created by Lina on 6/6/22.
 //
 

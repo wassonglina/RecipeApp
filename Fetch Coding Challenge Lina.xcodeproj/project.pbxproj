@@ -37,13 +37,6 @@
 			remoteGlobalIDString = FCA450BF283D56F700F5DD76;
 			remoteInfo = "Fetch Coding Challenge Lina";
 		};
-		FCA450E1283D56FE00F5DD76 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FCA450B8283D56F700F5DD76 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FCA450BF283D56F700F5DD76;
-			remoteInfo = "Fetch Coding Challenge Lina";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +48,6 @@
 		FCA450D1283D56FD00F5DD76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCA450D6283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fetch Coding Challenge LinaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA450DA283D56FE00F5DD76 /* RecipeDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDecodingTests.swift; sourceTree = "<group>"; };
-		FCA450E0283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fetch Coding Challenge LinaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA450E4283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaUITests.swift; sourceTree = "<group>"; };
 		FCA450E6283D56FE00F5DD76 /* Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch_Coding_Challenge_LinaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FCA450F3283D57F600F5DD76 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -88,13 +80,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FCA450DD283D56FE00F5DD76 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -113,7 +98,6 @@
 			children = (
 				FCA450C0283D56F700F5DD76 /* Fetch Coding Challenge Lina.app */,
 				FCA450D6283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests.xctest */,
-				FCA450E0283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,24 +216,6 @@
 			productReference = FCA450D6283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FCA450DF283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FCA450F0283D56FE00F5DD76 /* Build configuration list for PBXNativeTarget "Fetch Coding Challenge LinaUITests" */;
-			buildPhases = (
-				FCA450DC283D56FE00F5DD76 /* Sources */,
-				FCA450DD283D56FE00F5DD76 /* Frameworks */,
-				FCA450DE283D56FE00F5DD76 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FCA450E2283D56FE00F5DD76 /* PBXTargetDependency */,
-			);
-			name = "Fetch Coding Challenge LinaUITests";
-			productName = "Fetch Coding Challenge LinaUITests";
-			productReference = FCA450E0283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -264,10 +230,6 @@
 						CreatedOnToolsVersion = 13.2.1;
 					};
 					FCA450D5283D56FE00F5DD76 = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = FCA450BF283D56F700F5DD76;
-					};
-					FCA450DF283D56FE00F5DD76 = {
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = FCA450BF283D56F700F5DD76;
 					};
@@ -291,7 +253,6 @@
 			targets = (
 				FCA450BF283D56F700F5DD76 /* Fetch Coding Challenge Lina */,
 				FCA450D5283D56FE00F5DD76 /* Fetch Coding Challenge LinaTests */,
-				FCA450DF283D56FE00F5DD76 /* Fetch Coding Challenge LinaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -307,13 +268,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FCA450D4283D56FE00F5DD76 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FCA450DE283D56FE00F5DD76 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -354,13 +308,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FCA450DC283D56FE00F5DD76 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -368,11 +315,6 @@
 			isa = PBXTargetDependency;
 			target = FCA450BF283D56F700F5DD76 /* Fetch Coding Challenge Lina */;
 			targetProxy = FCA450D7283D56FE00F5DD76 /* PBXContainerItemProxy */;
-		};
-		FCA450E2283D56FE00F5DD76 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FCA450BF283D56F700F5DD76 /* Fetch Coding Challenge Lina */;
-			targetProxy = FCA450E1283D56FE00F5DD76 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -604,42 +546,6 @@
 			};
 			name = Release;
 		};
-		FCA450F1283D56FE00F5DD76 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = C62J87LZSH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lina.Fetch-Coding-Challenge-LinaUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Fetch Coding Challenge Lina";
-			};
-			name = Debug;
-		};
-		FCA450F2283D56FE00F5DD76 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = C62J87LZSH;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lina.Fetch-Coding-Challenge-LinaUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Fetch Coding Challenge Lina";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -666,15 +572,6 @@
 			buildConfigurations = (
 				FCA450EE283D56FE00F5DD76 /* Debug */,
 				FCA450EF283D56FE00F5DD76 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FCA450F0283D56FE00F5DD76 /* Build configuration list for PBXNativeTarget "Fetch Coding Challenge LinaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FCA450F1283D56FE00F5DD76 /* Debug */,
-				FCA450F2283D56FE00F5DD76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
